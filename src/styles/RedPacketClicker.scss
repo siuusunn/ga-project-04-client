@@ -1,9 +1,20 @@
-.red-packet-clicker-button {
-  border: 1px red solid;
-  cursor: pointer;
-}
+.clicker-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
 
-.red-packet-clicker-button:active {
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  .red-packet-div {
+    margin-right: 20px;
+  }
+
+  .red-packet-clicker-button {
+    border: 1px red solid;
+    cursor: pointer;
+  }
+
+  .red-packet-clicker-button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 }
