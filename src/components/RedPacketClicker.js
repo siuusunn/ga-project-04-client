@@ -58,13 +58,19 @@ export default function RedPacketClicker() {
 
   return (
     <>
-      <img
-        src={redPacket}
-        alt='red-packet-clicker-button'
-        onClick={handleClick}
-        className='red-packet-clicker-button'
-      ></img>
-      {/* <UserInfoInClicker /> */}
+      <div className='clicker-page-container'>
+        <div className='red-packet-div'>
+          <img
+            src={redPacket}
+            alt='red-packet-clicker-button'
+            onClick={handleClick}
+            className='red-packet-clicker-button'
+          ></img>
+        </div>
+        <div className='user-info-div'>
+          <UserInfoInClicker />
+        </div>
+      </div>
     </>
   );
 }

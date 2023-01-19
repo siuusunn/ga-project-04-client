@@ -2,7 +2,7 @@ import './styles/App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import ClickerIndex from './components/ClickerIndex';
+import RedPacketClicker from './components/RedPacketClicker';
 import Items from './components/Items';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -17,7 +17,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/clicker' element={<ClickerIndex />} />
+          <Route path='/clicker' element={<RedPacketClicker />} />
           <Route path='/items' element={<Items />} />
           <Route path='/users' element={<UsersIndex />} />
           <Route path='/register' element={<Register />} />
