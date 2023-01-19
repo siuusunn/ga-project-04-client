@@ -7,6 +7,7 @@ export default function Navbar() {
         <Link to='/'>Home</Link>
         <Link to='/clicker'>Clicker</Link>
         <Link to='/items'>Items</Link>
+        <Link to='/users'>Users</Link>
         <Link to='/login'>Login</Link>
         <Link to='/register'>Register</Link>
       </nav>
