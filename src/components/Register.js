@@ -18,7 +18,6 @@ export default function Register() {
 
   const handleChange = (event) => {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
-    console.log(formFields);
   };
 
   // const handleFileChange = (event) => {
@@ -67,14 +66,15 @@ export default function Register() {
     try {
       API.POST(API.ENDPOINTS.register, formFields).then(({ data }) => {
         console.log(data);
-        const loginData = API.POST(API.ENDPOINTS.login, {
+        API.POST(API.ENDPOINTS.login, {
           email: formFields.email,
           password: formFields.password
-        });
-
-        AUTH.setToken(loginData.data.token);
-
-        navigate('/');
+        })
+          .then(({ data }) => {
+            AUTH.setToken(data.token);
+            navigate('/');
+          })
+          .catch((e) => console.error(e));
       });
     } catch (error) {
       console.error(error);
