@@ -6,9 +6,9 @@ import ClickerIndex from './components/ClickerIndex';
 import Items from './components/Items';
 import Register from './components/Register';
 import Login from './components/Login';
-import Users from './components/Users';
+import UsersIndex from './components/UsersIndex';
 
-// window.Buffer = window.Buffer || require('buffer').Buffer;
+window.Buffer = window.Buffer || require('buffer').Buffer;
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/clicker' element={<ClickerIndex />} />
           <Route path='/items' element={<Items />} />
-          <Route path='/users' element={<Users />} />
+          <Route path='/users' element={<UsersIndex />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
         </Routes>

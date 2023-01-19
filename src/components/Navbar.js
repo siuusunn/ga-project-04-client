@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { AUTH } from '../lib/auth';
 
 export default function Navbar() {
   return (
