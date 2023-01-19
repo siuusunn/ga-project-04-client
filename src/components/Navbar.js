@@ -1,7 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AUTH } from '../lib/auth';
+import { useAuthenticated } from '../hooks/useAuthenticated';
 
 export default function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useAuthenticated();
+  const navigate = useNavigate();
+
+  const logout = () => {
+    AUTH.deleteToken();
+    setIsLoggedIn(false);
+    navigate('/');
+  };
+
   return (
     <>
       <nav>
@@ -9,8 +19,16 @@ export default function Navbar() {
         <Link to='/clicker'>Clicker</Link>
         <Link to='/items'>Items</Link>
         <Link to='/users'>Users</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/register'>Register</Link>
+        {isLoggedIn ? (
+          <Link to='/' onClick={logout}>
+            Log out
+          </Link>
+        ) : (
+          <>
+            <Link to='/login'>Login</Link>
+            <Link to='/register'>Register</Link>
+          </>
+        )}
       </nav>
     </>
   );
