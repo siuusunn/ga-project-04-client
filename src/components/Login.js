@@ -9,7 +9,6 @@ export default function Register() {
     email: '',
     password: ''
   });
-  // const [file, setFile] = useState();
 
   const handleChange = (event) => {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
