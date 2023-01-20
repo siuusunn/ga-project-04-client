@@ -24,7 +24,7 @@ export default function RedPacketClicker() {
     console.log(clicks);
   };
 
-  // console.log(userData);
+  console.log(userData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,7 +56,8 @@ export default function RedPacketClicker() {
           ></img>
         </div>
         <div className='user-info-div'>
-          <UserInfoInClicker />
+          {/* <UserInfoInClicker /> */}
+          <h1>{userData?.owner.username}'s Pocket</h1>
           <h3>
             Red Packets earned this session:{' '}
             {localStorage.getItem('number_of_red_packets', clicks)}
