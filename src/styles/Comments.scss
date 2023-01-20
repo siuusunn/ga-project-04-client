@@ -5,5 +5,7 @@
   .comments-display-div {
     height: 350px;
     overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
   }
 }

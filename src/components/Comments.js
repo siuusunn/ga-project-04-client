@@ -5,7 +5,9 @@ import '../styles/Comments.scss';
 
 export default function Comments() {
   const [comments, setComments] = useState(null);
-  const [commentField, setCommentField] = useState(null);
+  const [commentField, setCommentField] = useState({
+    text: ''
+  });
   const [isUpdated, setIsUpdated] = useState(false);
 
   const handleChange = (e) => {
@@ -17,6 +19,8 @@ export default function Comments() {
   const handleSubmit = (e) => {
     e.preventDefault();
     API.POST(API.ENDPOINTS.allComments, commentField, API.getHeaders());
+    setCommentField({ text: '' });
+    console.log(commentField);
     setIsUpdated(true);
   };
 
@@ -26,25 +30,27 @@ export default function Comments() {
       .catch((error) => console.error(error));
   }, [comments, isUpdated]);
 
-  console.log(comments);
-
   return (
     <>
       <div className='comments-container-div'>
         <h2>Chats</h2>
         <div className='comments-display-div'>
-          {comments?.map((comment) => (
-            <div>
-              <strong>{comment.owner.username}</strong>: {comment.text} at{' '}
-              <em>{moment(comment.created_at).fromNow()}</em>
-            </div>
-          ))}
+          <div>
+            {comments?.map((comment) => (
+              <div>
+                <strong>{comment.owner.username}</strong>: {comment.text} at{' '}
+                <em>{moment(comment.created_at).fromNow()}</em>
+              </div>
+            ))}
+          </div>
         </div>
         <label for='text'>Comment:</label>
         <input
           type='text'
           id='text'
           name='text'
+          value={commentField.text}
+          required
           onChange={handleChange}
         ></input>
         <button type='submit' onClick={handleSubmit}>
