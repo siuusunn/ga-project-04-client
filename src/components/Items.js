@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { API } from '../lib/api';
+import ItemImage from './ItemImage';
 
 export default function Items() {
   const [items, setItems] = useState(null);
@@ -23,6 +24,7 @@ export default function Items() {
           <div key={item.name}>
             <h3>{item.name}</h3>
             <p>{item.description}</p>
+            <ItemImage cloudinaryImageId={item.item_image} />
           </div>
         </>
       ))}

@@ -1,4 +1,4 @@
-import redPacket from '../assets/red-packet.png';
+import redPacket from '../assets/8-bit-redpacket.png';
 import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
 import UserInfoInClicker from './UserInfoInClicker';
