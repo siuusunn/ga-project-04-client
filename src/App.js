@@ -6,7 +6,7 @@ import RedPacketClicker from './components/RedPacketClicker';
 import Items from './components/Items';
 import Register from './components/Register';
 import Login from './components/Login';
-import UsersIndex from './components/UsersIndex';
+import Leaderboard from './components/Leaderboard';
 
 window.Buffer = window.Buffer || require('buffer').Buffer;
 
@@ -19,7 +19,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/clicker' element={<RedPacketClicker />} />
           <Route path='/items' element={<Items />} />
-          <Route path='/users' element={<UsersIndex />} />
+          <Route path='/users' element={<Leaderboard />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
         </Routes>
