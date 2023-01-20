@@ -24,7 +24,9 @@ export default function RedPacketClicker() {
   let click = 0;
 
   useEffect(() => {
-    API.GET(API.ENDPOINTS.singleUser(pk)).then(({ data }) => setUserData(data));
+    API.GET(API.ENDPOINTS.singlePocket(pk)).then(({ data }) =>
+      setUserData(data)
+    );
   }, [pk]);
 
   console.log(userData);
@@ -45,17 +47,8 @@ export default function RedPacketClicker() {
       number_of_red_packets: localStorage.getItem('number_of_red_packets')
     };
 
-    API.PUT(API.ENDPOINTS.singleUser(pk), apiReqBody, API.getHeaders());
+    API.PUT(API.ENDPOINTS.singlePocket(pk), apiReqBody, API.getHeaders());
   };
-
-  // setInterval(() => {
-  //   console.log(localStorage.getItem('number_of_red_packets'));
-  //   API.PUT(
-  //     API.ENDPOINTS.singleUser(pk),
-  //     localStorage.getItem('number_of_red_packets'),
-  //     API.getHeaders()
-  //   );
-  // }, 10000);
 
   return (
     <>

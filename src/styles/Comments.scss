@@ -3,9 +3,10 @@
   height: 400px;
 
   .comments-display-div {
-    height: 350px;
+    height: 200px;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
+    border: 1px solid red;
   }
 }
