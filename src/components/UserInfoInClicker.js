@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
 
-export default function User() {
+export default function User({ redpackets }) {
   const [userData, setUserData] = useState(null);
 
   const id = AUTH.getPayload().sub;
 
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     API.GET(API.ENDPOINTS.singlePocket(id))
@@ -17,14 +17,13 @@ export default function User() {
       .catch(({ message, response }) => {
         console.error(message, response);
       });
-  }, [id]);
+  }, [id, redpackets]);
 
-  console.log(userData);
+  // console.log(userData);
 
   return (
     <>
       <h2>{userData?.owner.username}'s Progress</h2>
-      <p>No. of red packets: {userData?.number_of_red_packets}</p>
       <ul>
         Items owned:{' '}
         {userData?.items.map((item) => (

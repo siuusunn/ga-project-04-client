@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import ItemImage from './ItemImage';
+import gardenBiscuits from '../assets/8-bit-garden-biscuits.png';
+import '../styles/Items.scss';
 
 export default function Items() {
   const [items, setItems] = useState(null);
@@ -24,7 +26,8 @@ export default function Items() {
           <div key={item.name}>
             <h3>{item.name}</h3>
             <p>{item.description}</p>
-            <ItemImage cloudinaryImageId={item.item_image} />
+            {/* <ItemImage cloudinaryImageId={item.item_image} /> */}
+            <img src={gardenBiscuits} className='item-image'></img>
           </div>
         </>
       ))}

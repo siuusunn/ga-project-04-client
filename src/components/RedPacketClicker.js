@@ -8,33 +8,40 @@ import { AUTH } from '../lib/auth';
 
 export default function RedPacketClicker() {
   const [userData, setUserData] = useState(null);
+  const [clicks, setClicks] = useState(0);
 
-  const pk = AUTH.getPayload().sub;
-
-  let click = 0;
+  const id = AUTH.getPayload().sub;
 
   useEffect(() => {
-    API.GET(API.ENDPOINTS.singlePocket(pk)).then(({ data }) =>
-      setUserData(data)
-    );
-  }, [pk]);
-
-  // const apiReqBody = {
-  //   ...userData,
-  //   number_of_red_packets: click
-  // };
+    API.GET(API.ENDPOINTS.singlePocket(id)).then(({ data }) => {
+      setUserData(data);
+    });
+  }, [id, userData?.number_of_red_packets]);
 
   const handleClick = (e) => {
+    setClicks((click) => (click += 1));
+    localStorage.setItem('number_of_red_packets', clicks);
+    console.log(clicks);
+  };
+
+  console.log(userData);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    click += 1;
-    console.log(click);
-    localStorage.setItem('number_of_red_packets', click);
-
-    const apiReqBody = {
-      number_of_red_packets: localStorage.getItem('number_of_red_packets')
-    };
-
-    API.PUT(API.ENDPOINTS.singlePocket(pk), apiReqBody, API.getHeaders());
+    try {
+      const existing_red_packets = userData?.number_of_red_packets;
+      const new_number_of_red_packets = existing_red_packets + clicks;
+      const apiReqBody = {
+        number_of_red_packets: new_number_of_red_packets
+      };
+      API.PUT(
+        API.ENDPOINTS.singlePocket(userData?.id),
+        apiReqBody,
+        API.getHeaders()
+      ).then(window.location.reload());
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -49,7 +56,18 @@ export default function RedPacketClicker() {
           ></img>
         </div>
         <div className='user-info-div'>
-          <UserInfoInClicker />
+          {/* <UserInfoInClicker /> */}
+          <h1>{userData?.owner.username}'s Pocket</h1>
+          <h3>
+            Red Packets earned this session:{' '}
+            {localStorage.getItem('number_of_red_packets', clicks)}
+          </h3>
+          <h3>
+            Red Packets earned in previous sessions:{' '}
+            {userData?.number_of_red_packets}
+          </h3>
+
+          <button onClick={handleSubmit}>Save Your Session</button>
         </div>
         <div className='comments-div'>
           <Comments />
