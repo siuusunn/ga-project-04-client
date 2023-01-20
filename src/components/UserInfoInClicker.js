@@ -9,8 +9,10 @@ export default function User() {
 
   const pk = AUTH.getPayload().sub;
 
+  console.log(pk);
+
   useEffect(() => {
-    API.GET(API.ENDPOINTS.singleUser(pk))
+    API.GET(API.ENDPOINTS.singlePocket(pk))
       .then(({ data }) => {
         setUserData(data);
       })
@@ -23,14 +25,14 @@ export default function User() {
 
   return (
     <>
-      <h2>{userData?.username}'s Progress</h2>
+      <h2>{userData?.owner.username}'s Progress</h2>
       <p>No. of red packets: {userData?.number_of_red_packets}</p>
-      <p>
-        Items:{' '}
+      <ul>
+        Items owned:{' '}
         {userData?.items.map((item) => (
           <li>{item.name}</li>
         ))}
-      </p>
+      </ul>
     </>
   );
 }

@@ -28,7 +28,7 @@ export default function Comments() {
     API.GET(API.ENDPOINTS.allComments)
       .then(({ data }) => setComments(data))
       .catch((error) => console.error(error));
-  }, [comments, isUpdated]);
+  }, [isUpdated]);
 
   return (
     <>

@@ -71,6 +71,7 @@ export default function Register() {
           password: formFields.password
         })
           .then(({ data }) => {
+            API.POST(API.ENDPOINTS.allPockets, data);
             AUTH.setToken(data.token);
             navigate('/');
           })
