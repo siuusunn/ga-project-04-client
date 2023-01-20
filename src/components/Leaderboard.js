@@ -5,7 +5,7 @@ export default function Users() {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
-    API.GET(API.ENDPOINTS.allUsers)
+    API.GET(API.ENDPOINTS.allPockets)
       .then(({ data }) => {
         setUsers(data);
         console.log(data);
@@ -17,15 +17,18 @@ export default function Users() {
 
   return (
     <>
-      <h1>See who you are competing with!</h1>
+      <h1>Leaderboard</h1>
       {users?.map((user) => (
         <>
           <div>
-            <img src={user.profile_image}></img>
-            <h3>{user.username}</h3>
-            <p>Red packets: {user.number_of_red_packets}</p>
-            <p>Items owned: {user.items}</p>
-            <p>Current multiplier: {user.multiplier}</p>
+            <h3>{user.owner.username}</h3>
+            <p>Red Packets: {user.number_of_red_packets}</p>
+            <p>
+              Items:{' '}
+              {user.items.map((item) => (
+                <p>{item.name}</p>
+              ))}
+            </p>
           </div>
         </>
       ))}

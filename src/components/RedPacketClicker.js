@@ -7,17 +7,7 @@ import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
 
 export default function RedPacketClicker() {
-  const [clicks, setClicks] = useState(0);
-  const [userData, setUserData] = useState({
-    email: '',
-    username: '',
-    first_name: '',
-    last_name: '',
-    profile_image: '',
-    number_of_red_packets: 0,
-    items: [],
-    multipliers: 1
-  });
+  const [userData, setUserData] = useState(null);
 
   const pk = AUTH.getPayload().sub;
 
@@ -28,8 +18,6 @@ export default function RedPacketClicker() {
       setUserData(data)
     );
   }, [pk]);
-
-  console.log(userData);
 
   // const apiReqBody = {
   //   ...userData,
@@ -43,7 +31,6 @@ export default function RedPacketClicker() {
     localStorage.setItem('number_of_red_packets', click);
 
     const apiReqBody = {
-      ...userData,
       number_of_red_packets: localStorage.getItem('number_of_red_packets')
     };
 

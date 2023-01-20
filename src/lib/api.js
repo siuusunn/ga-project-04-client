@@ -9,7 +9,7 @@ const ENDPOINTS = {
   allUsers: '/api/users/',
   singleUser: (pk) => `/api/users/${pk}`,
   allPockets: '/api/pockets/',
-  singlePocket: (pk) => `/api/pockets/${pk}`,
+  singlePocket: (pk) => `/api/pockets/${pk}/`,
   login: '/api/users/login/',
   register: '/api/users/register/',
   cloudinary: `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`
