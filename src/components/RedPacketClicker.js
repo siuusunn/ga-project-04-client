@@ -2,6 +2,7 @@ import redPacket from '../assets/red-packet.png';
 import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
 import UserInfoInClicker from './UserInfoInClicker';
+import Comments from './Comments';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
 
@@ -69,6 +70,9 @@ export default function RedPacketClicker() {
         </div>
         <div className='user-info-div'>
           <UserInfoInClicker />
+        </div>
+        <div className='comments-div'>
+          <Comments />
         </div>
       </div>
     </>
