@@ -1,7 +1,6 @@
 import redPacket from '../assets/8-bit-redpacket.png';
 import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
-import UserInfoInClicker from './UserInfoInClicker';
 import ItemsDisplayInClicker from './ItemsDisplayInClicker';
 import Comments from './Comments';
 import { API } from '../lib/api';
@@ -49,7 +48,9 @@ export default function RedPacketClicker() {
     <>
       <div className='clicker-page-container'>
         <div className='items-display-div'>
-          <ItemsDisplayInClicker />
+          <ItemsDisplayInClicker
+            number_of_red_packets={userData?.number_of_red_packets}
+          />
         </div>
         <div className='red-packet-div'>
           <img
@@ -60,17 +61,20 @@ export default function RedPacketClicker() {
           ></img>
         </div>
         <div className='user-info-div'>
-          {/* <UserInfoInClicker /> */}
           <h1>{userData?.owner.username}'s Pocket</h1>
           <h3>
             Red Packets earned this session:{' '}
             {localStorage.getItem('number_of_red_packets', clicks)}
           </h3>
-          <h3>
-            Red Packets earned in previous sessions:{' '}
+          <h4>
+            Total Red Packets earned in previous sessions:{' '}
             {userData?.number_of_red_packets}
-          </h3>
-
+          </h4>
+          <h4>Items owned:</h4>
+          {userData?.items.map((item) => (
+            <li>{item.name}</li>
+          ))}
+          <br />
           <button onClick={handleSubmit}>Save Your Session</button>
         </div>
         <div className='comments-div'>

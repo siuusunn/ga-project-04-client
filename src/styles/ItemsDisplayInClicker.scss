@@ -1,0 +1,13 @@
+.single-item-div {
+  display: flex;
+  flex-direction: column;
+
+  .image-and-name-div {
+    display: flex;
+    align-items: center;
+  }
+
+  .item-image {
+    height: 150px;
+  }
+}
