@@ -38,7 +38,9 @@ export default function RedPacketClicker() {
         API.ENDPOINTS.singlePocket(userData?.id),
         apiReqBody,
         API.getHeaders()
-      ).then(window.location.reload());
+      )
+        .then(localStorage.setItem('number_of_red_packets', 0))
+        .then(window.location.reload());
     } catch (e) {
       console.error(e);
     }

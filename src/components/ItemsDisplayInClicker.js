@@ -8,6 +8,12 @@ export default function ItemsDisplayInClicker({
 }) {
   const [items, setItems] = useState(null);
   const [unlockedItems, setUnlockedItems] = useState([]);
+  let numberOfRedPacketsAfterUnlock = numberOfRedPackets;
+
+  const apiReqBody = {
+    number_of_red_packets: numberOfRedPacketsAfterUnlock,
+    items: []
+  };
 
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
@@ -23,7 +29,7 @@ export default function ItemsDisplayInClicker({
 
   console.log(unlockedItems);
 
-  const isUnlocked = (itemId, red_packets_needed_to_unlock) => {
+  const isUnlocked = (itemId, red_packets_needed_to_unlock, rpToUnlock) => {
     if (unlockedItems?.includes(itemId)) {
       return <button disabled>Item Unlocked</button>;
     } else if (
@@ -31,7 +37,7 @@ export default function ItemsDisplayInClicker({
       unlockedItems?.includes(itemId) === false
     ) {
       return (
-        <button value={itemId} onClick={handleUnlock}>
+        <button value={itemId} id={rpToUnlock} onClick={handleUnlock}>
           Unlock
         </button>
       );
@@ -45,7 +51,8 @@ export default function ItemsDisplayInClicker({
 
   const handleUnlock = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    numberOfRedPacketsAfterUnlock -= e.target.id;
+    console.log(numberOfRedPacketsAfterUnlock);
   };
 
   return (
@@ -81,7 +88,11 @@ export default function ItemsDisplayInClicker({
                   ) : (
                     <button disabled>Unlock</button>
                   )} */}
-                  {isUnlocked(item.id, item.red_packets_needed_to_unlock)}
+                  {isUnlocked(
+                    item.id,
+                    item.red_packets_needed_to_unlock,
+                    item.red_packets_needed_to_unlock
+                  )}
                 </div>
               </div>
             </div>
