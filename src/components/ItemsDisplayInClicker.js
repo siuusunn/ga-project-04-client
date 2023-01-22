@@ -4,7 +4,8 @@ import '../styles/ItemsDisplayInClicker.scss';
 
 export default function ItemsDisplayInClicker({
   numberOfRedPackets,
-  userItems
+  userItems,
+  userId
 }) {
   const [items, setItems] = useState(null);
   const [unlockedItems, setUnlockedItems] = useState([]);
@@ -12,8 +13,10 @@ export default function ItemsDisplayInClicker({
 
   const apiReqBody = {
     number_of_red_packets: numberOfRedPacketsAfterUnlock,
-    items: []
+    items: unlockedItems
   };
+
+  console.log(apiReqBody);
 
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
@@ -27,7 +30,7 @@ export default function ItemsDisplayInClicker({
       });
   }, [userItems]);
 
-  console.log(unlockedItems);
+  // console.log(unlockedItems);
 
   const isUnlocked = (itemId, red_packets_needed_to_unlock, rpToUnlock) => {
     if (unlockedItems?.includes(itemId)) {
@@ -49,10 +52,17 @@ export default function ItemsDisplayInClicker({
     }
   };
 
+  // ! PROBLEM: RENDERS TWICE SO THE MATH IS NOT ACCURATE
+
   const handleUnlock = (e) => {
     e.preventDefault();
-    numberOfRedPacketsAfterUnlock -= e.target.id;
-    console.log(numberOfRedPacketsAfterUnlock);
+    numberOfRedPacketsAfterUnlock = numberOfRedPackets - e.target.id;
+    console.log(numberOfRedPacketsAfterUnlock, userId);
+    apiReqBody.number_of_red_packets =
+      numberOfRedPacketsAfterUnlock - e.target.id;
+    apiReqBody.items.push(e.target.value);
+    API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
+    window.location.reload();
   };
 
   return (
