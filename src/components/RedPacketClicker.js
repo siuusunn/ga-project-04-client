@@ -49,7 +49,8 @@ export default function RedPacketClicker() {
       <div className='clicker-page-container'>
         <div className='items-display-div'>
           <ItemsDisplayInClicker
-            number_of_red_packets={userData?.number_of_red_packets}
+            numberOfRedPackets={userData?.number_of_red_packets}
+            userItems={userData?.items}
           />
         </div>
         <div className='red-packet-div'>

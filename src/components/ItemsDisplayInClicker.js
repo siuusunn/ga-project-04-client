@@ -2,19 +2,31 @@ import { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import '../styles/ItemsDisplayInClicker.scss';
 
-export default function ItemsDisplayInClicker({ number_of_red_packets }) {
+export default function ItemsDisplayInClicker({
+  numberOfRedPackets,
+  userItems
+}) {
   const [items, setItems] = useState(null);
+  const [unlockedItems, setUnlockedItems] = useState([]);
 
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
       .then(({ data }) => {
         setItems(data);
+        setUnlockedItems(userItems?.map((item) => item.id));
         console.log(data);
       })
       .catch(({ message, response }) => {
         console.error(message, response);
       });
-  }, []);
+  }, [userItems]);
+
+  console.log(unlockedItems);
+
+  const handleUnlock = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+  };
 
   return (
     <>
@@ -37,9 +49,11 @@ export default function ItemsDisplayInClicker({ number_of_red_packets }) {
                     {item.red_packets_needed_to_unlock}
                   </p>
                   <p>Effects: + {item.multiplier} red packet per click</p>
-                  {number_of_red_packets >=
-                  item.red_packets_needed_to_unlock ? (
-                    <button>Unlock</button>
+                  {numberOfRedPackets >= item.red_packets_needed_to_unlock &&
+                  unlockedItems?.includes(item.id) === false ? (
+                    <button value={item.id} onClick={handleUnlock}>
+                      Unlock
+                    </button>
                   ) : (
                     <button disabled>Unlock</button>
                   )}
