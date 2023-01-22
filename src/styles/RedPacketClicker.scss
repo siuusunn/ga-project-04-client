@@ -1,0 +1,27 @@
+.clicker-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+
+  .items-display-div {
+    height: 80vh;
+    width: 500px;
+    overflow: auto;
+    margin-right: 50px;
+  }
+
+  .red-packet-div {
+    margin-right: 20px;
+  }
+
+  .red-packet-clicker-button {
+    cursor: pointer;
+    height: 350px;
+  }
+
+  .red-packet-clicker-button:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
