@@ -23,6 +23,26 @@ export default function ItemsDisplayInClicker({
 
   console.log(unlockedItems);
 
+  const isUnlocked = (itemId, red_packets_needed_to_unlock) => {
+    if (unlockedItems?.includes(itemId)) {
+      return <button disabled>Item Unlocked</button>;
+    } else if (
+      numberOfRedPackets >= red_packets_needed_to_unlock &&
+      unlockedItems?.includes(itemId) === false
+    ) {
+      return (
+        <button value={itemId} onClick={handleUnlock}>
+          Unlock
+        </button>
+      );
+    } else if (
+      numberOfRedPackets < red_packets_needed_to_unlock &&
+      unlockedItems?.includes(itemId) === false
+    ) {
+      return <button disabled>Not enough red packets to unlock</button>;
+    }
+  };
+
   const handleUnlock = (e) => {
     e.preventDefault();
     console.log(e.target.value);
@@ -45,21 +65,27 @@ export default function ItemsDisplayInClicker({
                   <h3>{item.name}</h3>
                   <p>{item.description}</p>
                   <p>
-                    Red Packets Needed to unlock:{' '}
-                    {item.red_packets_needed_to_unlock}
+                    <i>
+                      Red Packets Needed to unlock:{' '}
+                      {item.red_packets_needed_to_unlock}
+                    </i>
                   </p>
-                  <p>Effects: + {item.multiplier} red packet per click</p>
-                  {numberOfRedPackets >= item.red_packets_needed_to_unlock &&
+                  <p>
+                    <i>Effects: + {item.multiplier} red packet per click</i>
+                  </p>
+                  {/* {numberOfRedPackets >= item.red_packets_needed_to_unlock &&
                   unlockedItems?.includes(item.id) === false ? (
                     <button value={item.id} onClick={handleUnlock}>
                       Unlock
                     </button>
                   ) : (
                     <button disabled>Unlock</button>
-                  )}
+                  )} */}
+                  {isUnlocked(item.id, item.red_packets_needed_to_unlock)}
                 </div>
               </div>
             </div>
+            <hr />
           </>
         ))}
       </div>
