@@ -4,6 +4,13 @@
   align-items: center;
   margin: 50px;
 
+  .items-display-div {
+    height: 80vh;
+    width: 500px;
+    overflow: auto;
+    margin-right: 50px;
+  }
+
   .red-packet-div {
     margin-right: 20px;
   }

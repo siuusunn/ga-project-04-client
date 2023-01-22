@@ -2,6 +2,7 @@ import redPacket from '../assets/8-bit-redpacket.png';
 import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
 import UserInfoInClicker from './UserInfoInClicker';
+import ItemsDisplayInClicker from './ItemsDisplayInClicker';
 import Comments from './Comments';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
@@ -47,6 +48,9 @@ export default function RedPacketClicker() {
   return (
     <>
       <div className='clicker-page-container'>
+        <div className='items-display-div'>
+          <ItemsDisplayInClicker />
+        </div>
         <div className='red-packet-div'>
           <img
             src={redPacket}
