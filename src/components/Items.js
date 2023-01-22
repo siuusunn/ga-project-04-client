@@ -27,7 +27,7 @@ export default function Items() {
             <h3>{item.name}</h3>
             <p>{item.description}</p>
             {/* <ItemImage cloudinaryImageId={item.item_image} /> */}
-            <img src={gardenBiscuits} className='item-image'></img>
+            <img src={item.item_image} className='item-image'></img>
           </div>
         </>
       ))}
