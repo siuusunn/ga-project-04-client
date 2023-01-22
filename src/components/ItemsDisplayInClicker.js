@@ -5,7 +5,8 @@ import '../styles/ItemsDisplayInClicker.scss';
 export default function ItemsDisplayInClicker({
   numberOfRedPackets,
   userItems,
-  userId
+  userId,
+  userMultiplier
 }) {
   const [items, setItems] = useState(null);
   const [unlockedItems, setUnlockedItems] = useState([]);
@@ -13,26 +14,29 @@ export default function ItemsDisplayInClicker({
 
   const apiReqBody = {
     number_of_red_packets: numberOfRedPacketsAfterUnlock,
-    items: unlockedItems
+    items: unlockedItems,
+    multiplier: userMultiplier
   };
 
-  console.log(apiReqBody);
+  // console.log(userMultiplier);
 
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
       .then(({ data }) => {
         setItems(data);
         setUnlockedItems(userItems?.map((item) => item.id));
-        console.log(data);
       })
       .catch(({ message, response }) => {
         console.error(message, response);
       });
-  }, [userItems]);
+  }, [userItems, numberOfRedPackets]);
 
-  // console.log(unlockedItems);
-
-  const isUnlocked = (itemId, red_packets_needed_to_unlock, rpToUnlock) => {
+  const isUnlocked = (
+    itemId,
+    red_packets_needed_to_unlock,
+    rpToUnlock,
+    itemMultiplier
+  ) => {
     if (unlockedItems?.includes(itemId)) {
       return <button disabled>Item Unlocked</button>;
     } else if (
@@ -40,7 +44,12 @@ export default function ItemsDisplayInClicker({
       unlockedItems?.includes(itemId) === false
     ) {
       return (
-        <button value={itemId} id={rpToUnlock} onClick={handleUnlock}>
+        <button
+          value={itemId}
+          id={rpToUnlock}
+          onClick={handleUnlock}
+          className={itemMultiplier}
+        >
           Unlock
         </button>
       );
@@ -61,6 +70,8 @@ export default function ItemsDisplayInClicker({
     apiReqBody.number_of_red_packets =
       numberOfRedPacketsAfterUnlock - e.target.id;
     apiReqBody.items.push(e.target.value);
+    apiReqBody.multiplier = userMultiplier + parseInt(e.target.className);
+    console.log(apiReqBody);
     API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
     window.location.reload();
   };
@@ -101,7 +112,8 @@ export default function ItemsDisplayInClicker({
                   {isUnlocked(
                     item.id,
                     item.red_packets_needed_to_unlock,
-                    item.red_packets_needed_to_unlock
+                    item.red_packets_needed_to_unlock,
+                    item.multiplier
                   )}
                 </div>
               </div>
