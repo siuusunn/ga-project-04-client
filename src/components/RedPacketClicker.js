@@ -8,6 +8,7 @@ import { AUTH } from '../lib/auth';
 
 export default function RedPacketClicker() {
   const [userData, setUserData] = useState(null);
+  const [userItems, setUserItems] = useState([]);
   const [clicks, setClicks] = useState(0);
 
   const id = AUTH.getPayload().sub;
@@ -15,16 +16,14 @@ export default function RedPacketClicker() {
   useEffect(() => {
     API.GET(API.ENDPOINTS.singlePocket(id)).then(({ data }) => {
       setUserData(data);
+      setUserItems(data.items);
     });
   }, [id, userData?.number_of_red_packets]);
 
   const handleClick = (e) => {
-    setClicks((click) => (click += 1));
+    setClicks((click) => (click += userData?.multiplier));
     localStorage.setItem('number_of_red_packets', clicks);
-    console.log(clicks);
   };
-
-  console.log(userData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +53,7 @@ export default function RedPacketClicker() {
             numberOfRedPackets={userData?.number_of_red_packets}
             userItems={userData?.items}
             userId={userData?.id}
+            userMultiplier={userData?.multiplier}
           />
         </div>
         <div className='red-packet-div'>
@@ -76,8 +76,9 @@ export default function RedPacketClicker() {
           </h4>
           <h4>Items owned:</h4>
           {userData?.items.map((item) => (
-            <li>{item.name}</li>
+            <li key={item.name}>{item.name}</li>
           ))}
+          <h4>Red Packet Bonus: {userData?.multiplier}</h4>
           <br />
           <button onClick={handleSubmit}>Save Your Session</button>
         </div>
