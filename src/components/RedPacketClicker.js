@@ -6,11 +6,12 @@ import Comments from './Comments';
 import Leaderboard from './Leaderboard';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
+import { useAuthenticated } from '../hooks/useAuthenticated';
 
 export default function RedPacketClicker() {
   const [userData, setUserData] = useState(null);
   const [isUpdated, setIsUpdated] = useState(false);
-  // const [userItems, setUserItems] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useAuthenticated();
   const [clicks, setClicks] = useState(0);
 
   const id = AUTH.getPayload().sub;
@@ -19,7 +20,6 @@ export default function RedPacketClicker() {
     API.GET(API.ENDPOINTS.singlePocket(id)).then(({ data }) => {
       setUserData(data);
       setIsUpdated(false);
-      // setUserItems(data.items);
     });
   }, [id, isUpdated]);
 
@@ -68,30 +68,53 @@ export default function RedPacketClicker() {
         </div>
         <div className='middle-section'>
           <div className='red-packet-div'>
-            <img
-              src={redPacket}
-              alt='red-packet-clicker-button'
-              onClick={handleClick}
-              className='red-packet-clicker-button'
-            ></img>
+            {isLoggedIn ? (
+              <img
+                src={redPacket}
+                alt='red-packet-clicker-button'
+                onClick={handleClick}
+                className='red-packet-clicker-button'
+              ></img>
+            ) : (
+              <img
+                src={redPacket}
+                alt='red-packet-clicker-button'
+                className='red-packet-clicker-button'
+              ></img>
+            )}
+            {/* // <img
+            //   src={redPacket}
+            //   alt='red-packet-clicker-button'
+            //   onClick={handleClick}
+            //   className='red-packet-clicker-button'
+            // ></img> */}
           </div>
           <div className='user-info-div'>
-            <h1 className='user-title'>{userData?.owner.username}'s Pocket</h1>
-            <h3 className='user-current-rp'>
-              Red Packets earned this session:{' '}
-              <span>
-                {localStorage.getItem('number_of_red_packets', clicks)}
-              </span>
-            </h3>
-            <h4 className='user-total-rp'>
-              Total Red Packets earned:{' '}
-              <span>{userData?.number_of_red_packets}</span>
-            </h4>
-            <h4 className='user-multiplier'>
-              Red Packet Bonus Per Click: <span>{userData?.multiplier}</span>
-            </h4>
-            <br />
-            <button onClick={handleSubmit}>SAVE YOUR PROGRESS</button>
+            {isLoggedIn ? (
+              <>
+                <h1 className='user-title'>
+                  {userData?.owner.username}'s Pocket
+                </h1>
+                <h3 className='user-current-rp'>
+                  Red Packets earned this session:{' '}
+                  <span>
+                    {localStorage.getItem('number_of_red_packets', clicks)}
+                  </span>
+                </h3>
+                <h4 className='user-total-rp'>
+                  Total Red Packets earned:{' '}
+                  <span>{userData?.number_of_red_packets}</span>
+                </h4>
+                <h4 className='user-multiplier'>
+                  Red Packet Bonus Per Click:{' '}
+                  <span>{userData?.multiplier}</span>
+                </h4>
+                <br />
+                <button onClick={handleSubmit}>SAVE YOUR PROGRESS</button>
+              </>
+            ) : (
+              <h3>REGISTER NOW TO START EARNING RED PACKETS!</h3>
+            )}
           </div>
         </div>
         <div className='right-section'>
