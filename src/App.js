@@ -1,4 +1,4 @@
-import './styles/App.css';
+import './styles/App.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import RedPacketClicker from './components/RedPacketClicker';

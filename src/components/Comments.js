@@ -20,7 +20,6 @@ export default function Comments() {
     e.preventDefault();
     API.POST(API.ENDPOINTS.allComments, commentField, API.getHeaders());
     setCommentField({ text: '' });
-    console.log(commentField);
     setIsUpdated(true);
   };
 
@@ -28,6 +27,7 @@ export default function Comments() {
     API.GET(API.ENDPOINTS.allComments)
       .then(({ data }) => setComments(data))
       .catch((error) => console.error(error));
+    setIsUpdated(false);
   }, [isUpdated]);
 
   return (
