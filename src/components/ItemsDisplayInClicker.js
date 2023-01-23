@@ -91,15 +91,13 @@ export default function ItemsDisplayInClicker({
                 ></img>
                 <div>
                   <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                  <p>
-                    <i>
-                      Red Packets Needed to unlock:{' '}
-                      {item.red_packets_needed_to_unlock}
-                    </i>
+                  <p className='item-description'>{item.description}</p>
+                  <p className='item-unlock-amount'>
+                    Red Packets Needed to unlock:{' '}
+                    {item.red_packets_needed_to_unlock}
                   </p>
-                  <p>
-                    <i>Effects: + {item.multiplier} red packet per click</i>
+                  <p className='item-effect'>
+                    Effects: + {item.multiplier} red packet per click
                   </p>
                   {/* {numberOfRedPackets >= item.red_packets_needed_to_unlock &&
                   unlockedItems?.includes(item.id) === false ? (

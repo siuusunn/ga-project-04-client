@@ -1,11 +1,17 @@
 .single-item-div {
   display: flex;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 10px;
 
   .image-and-name-div {
     display: flex;
     align-items: center;
+
+    .item-unlock-amount,
+    .item-effect {
+      font-size: 8.5px;
+      color: red;
+    }
   }
 
   h3 {
@@ -13,6 +19,7 @@
   }
   p {
     margin: 4px;
+    font-size: 8.5px;
   }
 
   .item-image {

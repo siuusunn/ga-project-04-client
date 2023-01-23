@@ -3,6 +3,7 @@ import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
 import ItemsDisplayInClicker from './ItemsDisplayInClicker';
 import Comments from './Comments';
+import Leaderboard from './Leaderboard';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
 
@@ -56,33 +57,36 @@ export default function RedPacketClicker() {
             userMultiplier={userData?.multiplier}
           />
         </div>
-        <div className='red-packet-div'>
-          <img
-            src={redPacket}
-            alt='red-packet-clicker-button'
-            onClick={handleClick}
-            className='red-packet-clicker-button'
-          ></img>
+        <div className='middle-section'>
+          <div className='red-packet-div'>
+            <img
+              src={redPacket}
+              alt='red-packet-clicker-button'
+              onClick={handleClick}
+              className='red-packet-clicker-button'
+            ></img>
+          </div>
+          <div className='user-info-div'>
+            <h1>{userData?.owner.username}'s Pocket</h1>
+            <h3>
+              Red Packets earned this session:{' '}
+              {localStorage.getItem('number_of_red_packets', clicks)}
+            </h3>
+            <h4>
+              Total Red Packets earned in previous sessions:{' '}
+              {userData?.number_of_red_packets}
+            </h4>
+            <h4>Items owned:</h4>
+            {userData?.items.map((item) => (
+              <li key={item.name}>{item.name}</li>
+            ))}
+            <h4>Red Packet Bonus: {userData?.multiplier}</h4>
+            <br />
+            <button onClick={handleSubmit}>Save Your Session</button>
+          </div>
         </div>
-        <div className='user-info-div'>
-          <h1>{userData?.owner.username}'s Pocket</h1>
-          <h3>
-            Red Packets earned this session:{' '}
-            {localStorage.getItem('number_of_red_packets', clicks)}
-          </h3>
-          <h4>
-            Total Red Packets earned in previous sessions:{' '}
-            {userData?.number_of_red_packets}
-          </h4>
-          <h4>Items owned:</h4>
-          {userData?.items.map((item) => (
-            <li key={item.name}>{item.name}</li>
-          ))}
-          <h4>Red Packet Bonus: {userData?.multiplier}</h4>
-          <br />
-          <button onClick={handleSubmit}>Save Your Session</button>
-        </div>
-        <div className='comments-div'>
+        <div className='right-section'>
+          <Leaderboard />
           <Comments />
         </div>
       </div>

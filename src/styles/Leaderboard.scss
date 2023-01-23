@@ -1,0 +1,27 @@
+h5 {
+  margin: 0;
+}
+
+p {
+  font-size: 14px;
+}
+
+li {
+  list-style: decimal;
+}
+
+.user-score-items-div {
+  // border: 1px solid red;
+  margin: 2px;
+}
+
+.user-items-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .leaderboard-item-image {
+    height: 30px;
+    width: auto;
+  }
+}
