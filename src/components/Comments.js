@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { API } from '../lib/api';
+import { useAuthenticated } from '../hooks/useAuthenticated';
 import '../styles/Comments.scss';
 
 export default function Comments() {
@@ -9,6 +10,7 @@ export default function Comments() {
     text: ''
   });
   const [isUpdated, setIsUpdated] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useAuthenticated();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -50,22 +52,26 @@ export default function Comments() {
             ))}
           </div>
         </div>
-        <div className='input-container'>
-          <label for='text' className='input-label'>
-            MESSAGE:
-          </label>
-          <input
-            type='text'
-            id='text'
-            name='text'
-            value={commentField.text}
-            required
-            onChange={handleChange}
-          ></input>
-          <button type='submit' onClick={handleSubmit}>
-            SUBMIT
-          </button>
-        </div>
+        {isLoggedIn ? (
+          <div className='input-container'>
+            <label for='text' className='input-label'>
+              MESSAGE:
+            </label>
+            <input
+              type='text'
+              id='text'
+              name='text'
+              value={commentField.text}
+              required
+              onChange={handleChange}
+            ></input>
+            <button type='submit' onClick={handleSubmit}>
+              SUBMIT
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

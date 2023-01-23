@@ -118,7 +118,7 @@ export default function RedPacketClicker() {
           </div>
         </div>
         <div className='right-section'>
-          <Leaderboard />
+          <Leaderboard updateStatus={isUpdated} />
           <Comments />
         </div>
       </div>

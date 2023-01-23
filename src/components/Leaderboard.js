@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import '../styles/Leaderboard.scss';
 
-export default function Users() {
+export default function Users({ updateStatus }) {
   const [users, setUsers] = useState(null);
   const sortedScore = users?.sort(
     (a, b) => b.number_of_red_packets - a.number_of_red_packets
@@ -17,7 +17,7 @@ export default function Users() {
       .catch(({ message, response }) => {
         console.error(message, response);
       });
-  }, []);
+  }, [updateStatus]);
 
   return (
     <>
