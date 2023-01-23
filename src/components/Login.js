@@ -20,7 +20,7 @@ export default function Login() {
       API.POST(API.ENDPOINTS.login, formFields).then(({ data }) => {
         console.log(data);
         AUTH.setToken(data.token);
-        navigate('/');
+        navigate('/clicker');
         console.log('Successfully logged in');
       });
     } catch (error) {

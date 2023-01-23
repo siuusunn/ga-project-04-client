@@ -131,7 +131,6 @@ $shadow-color: #4aa52e;
     flex-direction: column;
     align-items: center;
   }
-
   .red-packet-clicker-button {
     cursor: pointer;
     height: 40vh;
@@ -140,7 +139,7 @@ $shadow-color: #4aa52e;
   }
 
   .red-packet-clicker-button:active {
-    box-shadow: 0 5px #666;
+    box-shadow: 0 5px yellow;
     transform: translateY(4px);
   }
 
