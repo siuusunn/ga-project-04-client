@@ -16,14 +16,11 @@ export default function Navbar() {
   return (
     <>
       <nav>
-        <Link to='/' className='navbar-item'>
-          HOME
-        </Link>
         <Link to='/clicker' className='navbar-item'>
           CLICKER
         </Link>
         {isLoggedIn ? (
-          <Link to='/' onClick={logout} className='navbar-item'>
+          <Link to='/clicker' onClick={logout} className='navbar-item'>
             LOGOUT
           </Link>
         ) : (
@@ -31,9 +28,6 @@ export default function Navbar() {
             <Link to='/loginregister' className='navbar-item'>
               LOGIN & REGISTER
             </Link>
-            {/* <Link to='/register' className='navbar-item'>
-              REGISTER
-            </Link> */}
           </>
         )}
       </nav>
