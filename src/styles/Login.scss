@@ -1,0 +1,22 @@
+// @mixin step3v2($width, $color, $bgcolor) {
+//   box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
+//     0 $width $bgcolor, 2 * $width 0 $bgcolor, -2 * $width 0 $bgcolor,
+//     0 (-2 * $width) $bgcolor, 0 2 * $width $bgcolor, 0 0 0 $width $bgcolor,
+//     3 * $width 0 $color, -3 * $width 0 $color, 0 3 * $width $color,
+//     0 (-3 * $width) $color, 0 (-$width) 0 $width $color,
+//     0 $width 0 $width $color, $width 0 0 $width $color,
+//     -$width 0 0 $width $color;
+//   margin: 3 * $width auto;
+// }
+
+// .login-container {
+//   @include step3v2(4px, black, #780000);
+//   height: 50%;
+//   width: 20%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   margin-top: 20vh;
+//   background-color: orange;
+// }
