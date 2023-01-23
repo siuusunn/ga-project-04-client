@@ -21,26 +21,29 @@ export default function Users() {
 
   return (
     <>
-      <h3>Leaderboard</h3>
-      {sortedScore?.map((user) => (
-        <>
-          <li>
-            <div className='user-score-items-div'>
-              {user.owner.username} | Red Packets: {user.number_of_red_packets}
+      <h3 className='leaderboard-title'>LEADERBOARD</h3>
+      <div className='leaderboard-container'>
+        {sortedScore?.map((user) => (
+          <>
+            <li>
+              <span className='username'>{user.owner.username}</span>
+              <p className='user-score'>
+                Red Packets: {user.number_of_red_packets}
+              </p>
               <div className='user-items-div'>
-                <p>Items: </p>
+                <p className='user-items'>Items: </p>
                 {user.items.map((item) => (
                   <img
                     src={item.item_image}
                     alt={item.item_image}
                     className='leaderboard-item-image'
                   ></img>
-                ))}
+                ))}{' '}
               </div>
-            </div>
-          </li>
-        </>
-      ))}
+            </li>
+          </>
+        ))}
+      </div>
     </>
   );
 }

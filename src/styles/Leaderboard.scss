@@ -1,27 +1,60 @@
-h5 {
-  margin: 0;
+@mixin step3v2($width, $color, $bgcolor) {
+  box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
+    0 $width $bgcolor, 2 * $width 0 $bgcolor, -2 * $width 0 $bgcolor,
+    0 (-2 * $width) $bgcolor, 0 2 * $width $bgcolor, 0 0 0 $width $bgcolor,
+    3 * $width 0 $color, -3 * $width 0 $color, 0 3 * $width $color,
+    0 (-3 * $width) $color, 0 (-$width) 0 $width $color,
+    0 $width 0 $width $color, $width 0 0 $width $color,
+    -$width 0 0 $width $color;
+  margin: 3 * $width auto;
 }
 
-p {
-  font-size: 14px;
+.leaderboard-title {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
-li {
-  list-style: decimal;
-}
+.leaderboard-container {
+  height: 450px;
+  overflow: auto;
+  @include step3v2(4px, black, #780000);
+  width: 80%;
+  padding: 10px;
+  background-color: #b94046;
 
-.user-score-items-div {
-  // border: 1px solid red;
-  margin: 2px;
-}
+  .username {
+    color: orange;
+  }
 
-.user-items-div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  .user-score {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  .user-items {
+    font-size: 12px;
+    margin: 0;
+  }
 
-  .leaderboard-item-image {
-    height: 30px;
-    width: auto;
+  li {
+    list-style: decimal;
+    border-top: #780000 solid 1.5px;
+    border-bottom: #780000 solid 1.5px;
+    padding: 20px 0 20px 0;
+  }
+
+  .user-score-items-div {
+    margin: 2px;
+  }
+
+  .user-items-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .leaderboard-item-image {
+      height: 30px;
+      width: auto;
+    }
   }
 }
