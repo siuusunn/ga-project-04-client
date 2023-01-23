@@ -11,16 +11,16 @@
 
 .leaderboard-title {
   text-align: center;
-  font-size: 25px;
-  margin-bottom: 10px;
+  font-size: 1.6em;
+  margin-bottom: 1vh;
 }
 
 .leaderboard-container {
-  height: 300px;
+  height: 35vh;
   overflow: auto;
   @include step3v2(4px, black, #780000);
-  width: 80%;
-  padding: 10px;
+  width: 26vw;
+  padding: 0.7vw;
   background-color: #b94046;
 
   .username {
@@ -28,32 +28,33 @@
   }
 
   .user-score {
-    margin-top: 10px;
-    font-size: 12px;
+    margin-top: 1vh;
+    font-size: 0.75em;
   }
   .user-items {
-    font-size: 12px;
+    font-size: 0.75em;
     margin: 0;
   }
 
   li {
     list-style: decimal;
-    border-top: #780000 solid 1.5px;
-    border-bottom: #780000 solid 1.5px;
-    padding: 20px 0 20px 0;
+    border-top: #780000 solid 0.2vh;
+    border-bottom: #780000 solid 0.2vh;
+    padding: 2vh 0 2vh 0;
   }
 
   .user-score-items-div {
-    margin: 2px;
+    margin: 0.2vw;
   }
 
   .user-items-div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
 
     .leaderboard-item-image {
-      height: 30px;
+      height: 3.5vh;
       width: auto;
     }
   }

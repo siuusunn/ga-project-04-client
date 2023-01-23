@@ -16,13 +16,17 @@ $button-background: #92cd41;
 $sec-button-background: #76c442;
 $shadow-color: #4aa52e;
 
+.items-title {
+  font-size: 1.6em;
+}
+
 .single-item-div {
   display: flex;
   flex-direction: column;
-  font-size: 10px;
-  @include step3v2(3px, black, #780000);
-  margin-bottom: 25px;
-  padding: 6px;
+  font-size: 0.6em;
+  @include step3v2(0.15vw, black, #780000);
+  margin-bottom: 2.5vh;
+  padding: 0.5vw;
   background-color: #b94046;
 
   .image-and-name-div {
@@ -31,7 +35,7 @@ $shadow-color: #4aa52e;
 
     .item-unlock-amount,
     .item-effect {
-      font-size: 8.5px;
+      font-size: 0.85em;
       color: pink;
     }
   }
@@ -41,15 +45,15 @@ $shadow-color: #4aa52e;
     display: inline-block;
     position: relative;
     text-align: center;
-    font-size: 8px;
-    padding: 5px;
+    font-size: 0.9em;
+    padding: 0.4vw;
     font-family: 'Press Start 2P', cursive;
     text-decoration: none;
-    color: white;
+    color: black;
     box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;
-    height: 30px;
-    width: 280px;
-    margin-top: 5px;
+    height: 3vh;
+    width: 14.5vw;
+    margin-top: 1vh;
 
     &:hover,
     &:focus {
@@ -93,17 +97,9 @@ $shadow-color: #4aa52e;
     }
   }
 
-  h3 {
-    margin: 4px;
-  }
-  p {
-    margin: 4px;
-    font-size: 8.5px;
-  }
-
   .item-image {
     height: auto;
-    width: 100px;
-    margin-right: 10px;
+    width: 5vw;
+    margin-right: 0.7vw;
   }
 }

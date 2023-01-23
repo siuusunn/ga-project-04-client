@@ -38,7 +38,7 @@ export default function ItemsDisplayInClicker({
     itemMultiplier
   ) => {
     if (unlockedItems?.includes(itemId)) {
-      return <button disabled>Item Unlocked</button>;
+      return <button disabled>ITEM UNLOCKED</button>;
     } else if (
       numberOfRedPackets >= red_packets_needed_to_unlock &&
       unlockedItems?.includes(itemId) === false
@@ -50,14 +50,14 @@ export default function ItemsDisplayInClicker({
           onClick={handleUnlock}
           className={itemMultiplier}
         >
-          Unlock
+          UNLOCK
         </button>
       );
     } else if (
       numberOfRedPackets < red_packets_needed_to_unlock &&
       unlockedItems?.includes(itemId) === false
     ) {
-      return <button disabled>Not enough red packets to unlock</button>;
+      return <button disabled>NOT ENOUGH RED PACKETS</button>;
     }
   };
 
@@ -78,7 +78,7 @@ export default function ItemsDisplayInClicker({
 
   return (
     <>
-      <h1>ITEMS</h1>
+      <h1 className='items-title'>ITEMS</h1>
       <div>
         {items?.map((item) => (
           <>
@@ -99,14 +99,6 @@ export default function ItemsDisplayInClicker({
                   <p className='item-effect'>
                     Effects: + {item.multiplier} red packet per click
                   </p>
-                  {/* {numberOfRedPackets >= item.red_packets_needed_to_unlock &&
-                  unlockedItems?.includes(item.id) === false ? (
-                    <button value={item.id} onClick={handleUnlock}>
-                      Unlock
-                    </button>
-                  ) : (
-                    <button disabled>Unlock</button>
-                  )} */}
                   {isUnlocked(
                     item.id,
                     item.red_packets_needed_to_unlock,

@@ -52,7 +52,7 @@ export default function Comments() {
         </div>
         <div className='input-container'>
           <label for='text' className='input-label'>
-            SAY SOMETHING:
+            MESSAGE:
           </label>
           <input
             type='text'
