@@ -67,22 +67,26 @@ export default function RedPacketClicker() {
             ></img>
           </div>
           <div className='user-info-div'>
-            <h1>{userData?.owner.username}'s Pocket</h1>
-            <h3>
+            <h1 className='user-title'>{userData?.owner.username}'s Pocket</h1>
+            <h3 className='user-current-rp'>
               Red Packets earned this session:{' '}
-              {localStorage.getItem('number_of_red_packets', clicks)}
+              <span>
+                {localStorage.getItem('number_of_red_packets', clicks)}
+              </span>
             </h3>
-            <h4>
-              Total Red Packets earned in previous sessions:{' '}
-              {userData?.number_of_red_packets}
+            <h4 className='user-total-rp'>
+              Total Red Packets earned:{' '}
+              <span>{userData?.number_of_red_packets}</span>
             </h4>
-            <h4>Items owned:</h4>
+            {/* <h4>Items owned:</h4>
             {userData?.items.map((item) => (
               <li key={item.name}>{item.name}</li>
-            ))}
-            <h4>Red Packet Bonus: {userData?.multiplier}</h4>
+            ))} */}
+            <h4 className='user-multiplier'>
+              Red Packet Bonus Per Click: <span>{userData?.multiplier}</span>
+            </h4>
             <br />
-            <button onClick={handleSubmit}>Save Your Session</button>
+            <button onClick={handleSubmit}>SAVE YOUR PROGRESS</button>
           </div>
         </div>
         <div className='right-section'>
