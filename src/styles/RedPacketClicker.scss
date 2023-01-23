@@ -4,15 +4,21 @@
   align-items: center;
   margin: 50px;
 
-  .items-display-div {
-    height: 80vh;
-    width: 500px;
-    overflow: auto;
-    margin-right: 50px;
+  .middle-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 41vw;
+    height: 90vh;
   }
 
-  .red-packet-div {
-    margin-right: 20px;
+  .items-display-div {
+    height: 90vh;
+    width: 25vw;
+    overflow: auto;
+    margin-right: 50px;
+    padding-right: 50px;
   }
 
   .red-packet-clicker-button {
@@ -23,5 +29,12 @@
   .red-packet-clicker-button:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+  }
+
+  .right-section {
+    width: 34vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
   }
 }

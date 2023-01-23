@@ -17,7 +17,6 @@ export default function Navbar() {
       <nav>
         <Link to='/'>Home</Link>
         <Link to='/clicker'>Clicker</Link>
-        <Link to='/users'>Leaderboard</Link>
         {isLoggedIn ? (
           <Link to='/' onClick={logout}>
             Log out
