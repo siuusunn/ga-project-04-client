@@ -20,9 +20,10 @@ $shadow-color: #4aa52e;
   display: flex;
   flex-direction: column;
   font-size: 10px;
-  @include step3v2(3px, red, white);
+  @include step3v2(3px, black, #780000);
   margin-bottom: 25px;
   padding: 6px;
+  background-color: #b94046;
 
   .image-and-name-div {
     display: flex;
@@ -31,7 +32,7 @@ $shadow-color: #4aa52e;
     .item-unlock-amount,
     .item-effect {
       font-size: 8.5px;
-      color: red;
+      color: pink;
     }
   }
 
