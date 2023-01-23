@@ -9,7 +9,8 @@ import { AUTH } from '../lib/auth';
 
 export default function RedPacketClicker() {
   const [userData, setUserData] = useState(null);
-  const [userItems, setUserItems] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false);
+  // const [userItems, setUserItems] = useState([]);
   const [clicks, setClicks] = useState(0);
 
   const id = AUTH.getPayload().sub;
@@ -17,9 +18,14 @@ export default function RedPacketClicker() {
   useEffect(() => {
     API.GET(API.ENDPOINTS.singlePocket(id)).then(({ data }) => {
       setUserData(data);
-      setUserItems(data.items);
+      setIsUpdated(false);
+      // setUserItems(data.items);
     });
-  }, [id, userData?.number_of_red_packets]);
+  }, [id, isUpdated]);
+
+  const handleUpdate = (e) => {
+    setIsUpdated(true);
+  };
 
   const handleClick = (e) => {
     setClicks((click) => (click += userData?.multiplier));
@@ -34,13 +40,15 @@ export default function RedPacketClicker() {
       const apiReqBody = {
         number_of_red_packets: new_number_of_red_packets
       };
+
       API.PUT(
         API.ENDPOINTS.singlePocket(userData?.id),
         apiReqBody,
         API.getHeaders()
-      )
-        .then(localStorage.setItem('number_of_red_packets', 0))
-        .then(window.location.reload());
+      );
+      localStorage.setItem('number_of_red_packets', 0);
+      setIsUpdated(true);
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
@@ -55,6 +63,7 @@ export default function RedPacketClicker() {
             userItems={userData?.items}
             userId={userData?.id}
             userMultiplier={userData?.multiplier}
+            isUpdatedFunction={handleUpdate}
           />
         </div>
         <div className='middle-section'>
@@ -78,10 +87,6 @@ export default function RedPacketClicker() {
               Total Red Packets earned:{' '}
               <span>{userData?.number_of_red_packets}</span>
             </h4>
-            {/* <h4>Items owned:</h4>
-            {userData?.items.map((item) => (
-              <li key={item.name}>{item.name}</li>
-            ))} */}
             <h4 className='user-multiplier'>
               Red Packet Bonus Per Click: <span>{userData?.multiplier}</span>
             </h4>

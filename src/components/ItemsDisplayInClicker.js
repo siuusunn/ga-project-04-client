@@ -6,7 +6,8 @@ export default function ItemsDisplayInClicker({
   numberOfRedPackets,
   userItems,
   userId,
-  userMultiplier
+  userMultiplier,
+  isUpdatedFunction
 }) {
   const [items, setItems] = useState(null);
   const [unlockedItems, setUnlockedItems] = useState([]);
@@ -18,8 +19,6 @@ export default function ItemsDisplayInClicker({
     multiplier: userMultiplier
   };
 
-  // console.log(userMultiplier);
-
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
       .then(({ data }) => {
@@ -29,7 +28,7 @@ export default function ItemsDisplayInClicker({
       .catch(({ message, response }) => {
         console.error(message, response);
       });
-  }, [userItems, numberOfRedPackets]);
+  }, [userItems]);
 
   const isUnlocked = (
     itemId,
@@ -65,15 +64,18 @@ export default function ItemsDisplayInClicker({
 
   const handleUnlock = (e) => {
     e.preventDefault();
-    numberOfRedPacketsAfterUnlock = numberOfRedPackets - e.target.id;
-    console.log(numberOfRedPacketsAfterUnlock, userId);
-    apiReqBody.number_of_red_packets =
-      numberOfRedPacketsAfterUnlock - e.target.id;
-    apiReqBody.items.push(e.target.value);
-    apiReqBody.multiplier = userMultiplier + parseInt(e.target.className);
-    console.log(apiReqBody);
-    API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
-    window.location.reload();
+    try {
+      numberOfRedPacketsAfterUnlock = numberOfRedPackets - e.target.id;
+      apiReqBody.number_of_red_packets =
+        numberOfRedPacketsAfterUnlock - e.target.id;
+      apiReqBody.items.push(e.target.value);
+      apiReqBody.multiplier = userMultiplier + parseInt(e.target.className);
+      API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
+      isUpdatedFunction();
+      console.log('unlocked');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
