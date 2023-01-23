@@ -28,12 +28,12 @@ export default function Navbar() {
           </Link>
         ) : (
           <>
-            <Link to='/login' className='navbar-item'>
-              LOGIN
+            <Link to='/loginregister' className='navbar-item'>
+              LOGIN & REGISTER
             </Link>
-            <Link to='/register' className='navbar-item'>
+            {/* <Link to='/register' className='navbar-item'>
               REGISTER
-            </Link>
+            </Link> */}
           </>
         )}
       </nav>

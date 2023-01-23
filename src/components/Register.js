@@ -84,81 +84,93 @@ export default function Register() {
 
   return (
     <>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <label for='username'>Username:</label>
-        <br />
-        <input
-          type='text'
-          id='username'
-          name='username'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label for='email'>Email:</label>
-        <br />
-        <input
-          type='email'
-          id='email'
-          name='email'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label for='password'>Password:</label>
-        <br />
-        <input
-          type='password'
-          id='password'
-          name='password'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label for='password_confirmation'>Password Confirmation:</label>
-        <br />
-        <input
-          type='password'
-          id='password_confirmation'
-          name='password_confirmation'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label for='first_name'>First Name:</label>
-        <br />
-        <input
-          type='first_name'
-          id='first_name'
-          name='first_name'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label for='last_name'>Last Name:</label>
-        <br />
-        <input
-          type='last_name'
-          id='last_name'
-          name='last_name'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label for='profile_image'>Profile Image:</label>
-        <br />
-        {/* <input
+      <div className='register-container'>
+        <h1 className='register-title'>REGISTER</h1>
+        <form onSubmit={handleSubmit}>
+          <div className='register-input-container'>
+            <label for='username' className='register-label'>
+              USERNAME:
+            </label>
+            <input
+              type='text'
+              id='username'
+              name='username'
+              onChange={handleChange}
+              className='register-input'
+            ></input>
+            <label for='email' className='register-label'>
+              EMAIL:
+            </label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              onChange={handleChange}
+              className='register-input'
+            ></input>
+            <label for='password' className='register-label'>
+              PASSWORD:
+            </label>
+            <input
+              type='password'
+              id='password'
+              name='password'
+              onChange={handleChange}
+              className='register-input'
+            ></input>
+            <label for='password_confirmation' className='register-label'>
+              PASSWORD CONFIRMATION:
+            </label>
+            <input
+              type='password'
+              id='password_confirmation'
+              name='password_confirmation'
+              onChange={handleChange}
+              className='register-input'
+            ></input>
+            <label for='first_name' className='register-label'>
+              FIRST NAME:
+            </label>
+            <input
+              type='first_name'
+              id='first_name'
+              name='first_name'
+              onChange={handleChange}
+              className='register-input'
+            ></input>
+            <label for='last_name' className='register-label'>
+              LAST NAME:
+            </label>
+            <input
+              type='last_name'
+              id='last_name'
+              name='last_name'
+              onChange={handleChange}
+              className='register-input'
+            ></input>
+            <label for='profile_image' className='register-label'>
+              PROFILE PICTURE:
+            </label>
+            {/* <input
           type='file'
           id='profile_image'
           name='profile_image'
           onChange={handleFileChange}
         ></input>
         <br /> */}
-        <input
-          type='type'
-          id='profile_image'
-          name='profile_image'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <br />
-        <button type='submit'>Sign Up</button>
-      </form>
+            <input
+              type='type'
+              id='profile_image'
+              name='profile_image'
+              onChange={handleChange}
+              className='register-input'
+            ></input>
+            <button type='submit' className='register-button'>
+              SIGN UP
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

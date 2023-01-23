@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Login.scss';
 
-export default function Register() {
+export default function Login() {
   const navigate = useNavigate();
   const [formFields, setFormFields] = useState({
     email: '',
@@ -30,29 +31,36 @@ export default function Register() {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label for='email'>Email:</label>
-        <br />
-        <input
-          type='email'
-          id='email'
-          name='email'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <label for='password'>Password:</label>
-        <br />
-        <input
-          type='password'
-          id='password'
-          name='password'
-          onChange={handleChange}
-        ></input>
-        <br />
-        <br />
-        <button type='submit'>Sign In</button>
-      </form>
+      <div className='login-container'>
+        <h1 className='login-title'>LOGIN</h1>
+        <form onSubmit={handleSubmit}>
+          <div className='login-input-container'>
+            <label for='email' className='login-label'>
+              EMAIL:
+            </label>
+            <input
+              type='email'
+              id='email'
+              name='email'
+              onChange={handleChange}
+              className='login-input'
+            ></input>
+            <label for='password' className='login-label'>
+              PASSWORD:
+            </label>
+            <input
+              type='password'
+              id='password'
+              name='password'
+              onChange={handleChange}
+              className='login-input'
+            ></input>
+            <button type='submit' className='login-button'>
+              SIGN IN
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
