@@ -10,7 +10,8 @@ export default function Navbar() {
   const logout = () => {
     AUTH.deleteToken();
     setIsLoggedIn(false);
-    navigate('/');
+    // navigate('/clicker');
+    window.location.reload();
   };
 
   return (
