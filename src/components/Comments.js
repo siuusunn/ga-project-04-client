@@ -32,30 +32,40 @@ export default function Comments() {
 
   return (
     <>
-      <div className='comments-container-div'>
-        <h2>Chats</h2>
+      <div className='comments-container'>
+        <h2 className='comments-title'>CHATS</h2>
         <div className='comments-display-div'>
           <div>
             {comments?.map((comment) => (
-              <div>
-                <strong>{comment.owner.username}</strong>: {comment.text} at{' '}
-                <em>{moment(comment.created_at).fromNow()}</em>
+              <div className='single-comment'>
+                <p className='comment-username'>{comment.owner.username}:</p>
+                <p className='comment-text'>
+                  {comment.text}
+                  <em className='comment-timestamp'>
+                    {' '}
+                    at {moment(comment.created_at).fromNow()}
+                  </em>
+                </p>
               </div>
             ))}
           </div>
         </div>
-        <label for='text'>Comment:</label>
-        <input
-          type='text'
-          id='text'
-          name='text'
-          value={commentField.text}
-          required
-          onChange={handleChange}
-        ></input>
-        <button type='submit' onClick={handleSubmit}>
-          Submit
-        </button>
+        <div className='input-container'>
+          <label for='text' className='input-label'>
+            MESSAGE:
+          </label>
+          <input
+            type='text'
+            id='text'
+            name='text'
+            value={commentField.text}
+            required
+            onChange={handleChange}
+          ></input>
+          <button type='submit' onClick={handleSubmit}>
+            SUBMIT
+          </button>
+        </div>
       </div>
     </>
   );

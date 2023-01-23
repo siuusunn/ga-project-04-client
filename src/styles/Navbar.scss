@@ -1,0 +1,30 @@
+nav {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background-color: #780000;
+  color: pink;
+  height: 3vh;
+
+  .navbar-item {
+    margin: 10px;
+  }
+
+  a:link {
+    text-decoration: none;
+    color: pink;
+  }
+
+  a:visited {
+    color: pink;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: yellow;
+  }
+
+  a:active {
+    color: orange;
+  }
+}

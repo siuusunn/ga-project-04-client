@@ -1,0 +1,61 @@
+@mixin step3v2($width, $color, $bgcolor) {
+  box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
+    0 $width $bgcolor, 2 * $width 0 $bgcolor, -2 * $width 0 $bgcolor,
+    0 (-2 * $width) $bgcolor, 0 2 * $width $bgcolor, 0 0 0 $width $bgcolor,
+    3 * $width 0 $color, -3 * $width 0 $color, 0 3 * $width $color,
+    0 (-3 * $width) $color, 0 (-$width) 0 $width $color,
+    0 $width 0 $width $color, $width 0 0 $width $color,
+    -$width 0 0 $width $color;
+  margin: 3 * $width auto;
+}
+
+.leaderboard-title {
+  text-align: center;
+  font-size: 1.6em;
+  margin-bottom: 1vh;
+}
+
+.leaderboard-container {
+  height: 35vh;
+  overflow: auto;
+  @include step3v2(4px, black, #780000);
+  width: 26vw;
+  padding: 0.7vw;
+  background-color: #b94046;
+
+  .username {
+    color: orange;
+  }
+
+  .user-score {
+    margin-top: 1vh;
+    font-size: 0.75em;
+  }
+  .user-items {
+    font-size: 0.75em;
+    margin: 0;
+  }
+
+  li {
+    list-style: decimal;
+    border-top: #780000 solid 0.2vh;
+    border-bottom: #780000 solid 0.2vh;
+    padding: 2vh 0 2vh 0;
+  }
+
+  .user-score-items-div {
+    margin: 0.2vw;
+  }
+
+  .user-items-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .leaderboard-item-image {
+      height: 3.5vh;
+      width: auto;
+    }
+  }
+}
