@@ -19,6 +19,10 @@
     overflow: auto;
     margin-right: 50px;
     padding-right: 50px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .red-packet-clicker-button {
