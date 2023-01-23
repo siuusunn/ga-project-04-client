@@ -23,7 +23,6 @@ $shadow-color: #4aa52e;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 50px 20px 50px;
 
   .middle-section {
     display: flex;
@@ -31,30 +30,30 @@ $shadow-color: #4aa52e;
     align-items: center;
     justify-content: center;
     width: 41vw;
-    height: 90vh;
+    height: 97vh;
 
     .user-info-div {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      @include step4(5px, orange, yellow);
+      @include step4(0.28vw, orange, yellow);
       background-color: #f07800;
-      padding: 20px 20px 30px 20px;
-      width: 500px;
+      padding: 2.5vh 2vw 3.5vh 2vw;
+      width: 29vw;
       height: auto;
 
       .user-title {
-        margin-top: 20px;
-        margin-bottom: 10;
-        font-size: 24px;
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        font-size: 1.6em;
       }
 
       .user-current-rp,
       .user-total-rp,
       .user-multiplier {
-        font-size: 14px;
-        margin: 5px;
+        font-size: 0.9em;
+        margin: 0.3vw;
       }
 
       span {
@@ -67,14 +66,14 @@ $shadow-color: #4aa52e;
       display: inline-block;
       position: relative;
       text-align: center;
-      font-size: 10px;
-      padding: 3px;
+      font-size: 0.7em;
+      padding: 0.5vw;
       font-family: 'Press Start 2P', cursive;
       text-decoration: none;
       color: black;
       box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;
-      height: 50px;
-      width: 280px;
+      height: 5.5vh;
+      width: 20vw;
       margin-top: 5px;
 
       &:hover,
@@ -121,12 +120,13 @@ $shadow-color: #4aa52e;
   }
 
   .items-display-div {
-    height: 90vh;
+    height: 97vh;
     width: 25vw;
     overflow: auto;
-    margin-right: 50px;
-    padding-right: 50px;
-    padding-left: 10px;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -134,8 +134,9 @@ $shadow-color: #4aa52e;
 
   .red-packet-clicker-button {
     cursor: pointer;
-    height: 350px;
-    margin-bottom: 30px;
+    height: 40vh;
+    margin-bottom: 4vh;
+    border-radius: 8px;
   }
 
   .red-packet-clicker-button:active {
@@ -145,7 +146,7 @@ $shadow-color: #4aa52e;
 
   .right-section {
     width: 34vw;
-    height: 90vh;
+    height: 97vh;
     display: flex;
     flex-direction: column;
   }
