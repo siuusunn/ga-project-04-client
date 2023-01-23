@@ -78,7 +78,7 @@ export default function ItemsDisplayInClicker({
 
   return (
     <>
-      <h1>Items</h1>
+      <h1>ITEMS</h1>
       <div>
         {items?.map((item) => (
           <>
@@ -116,7 +116,6 @@ export default function ItemsDisplayInClicker({
                 </div>
               </div>
             </div>
-            <hr />
           </>
         ))}
       </div>
