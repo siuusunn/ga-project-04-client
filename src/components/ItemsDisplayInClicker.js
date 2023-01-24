@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import '../styles/ItemsDisplayInClicker.scss';
 
@@ -22,7 +22,6 @@ export default function ItemsDisplayInClicker({
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
       .then(({ data }) => {
-        console.log(data);
         setItems(data);
         setUnlockedItems(userItems?.map((item) => item.id));
       })
@@ -84,8 +83,8 @@ export default function ItemsDisplayInClicker({
       <h1 className='items-title'>ITEMS</h1>
       <div>
         {items?.map((item) => (
-          <>
-            <div key={item.name} className='single-item-div'>
+          <React.Fragment key={item.id}>
+            <div className='single-item-div'>
               <div className='image-and-name-div'>
                 <img
                   src={item.item_image}
@@ -111,7 +110,7 @@ export default function ItemsDisplayInClicker({
                 </div>
               </div>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </>

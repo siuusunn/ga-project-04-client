@@ -15,7 +15,6 @@ export default function Comments() {
   const handleChange = (e) => {
     e.preventDefault();
     setCommentField({ ...commentField, [e.target.name]: e.target.value });
-    console.log(commentField);
   };
 
   const handleSubmit = (e) => {

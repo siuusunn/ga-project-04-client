@@ -2,16 +2,16 @@ import axios from 'axios';
 import { AUTH } from './auth';
 
 const ENDPOINTS = {
-  allItems: 'http://localhost:8000/api/items/',
-  singleItem: (pk) => `/api/items/${pk}`,
-  allComments: '/api/comments/',
+  allItems: `${process.env.REACT_APP_BASE_URL}/api/items/`,
+  singleItem: (pk) => `${process.env.REACT_APP_BASE_URL}/api/items/${pk}`,
+  allComments: `${process.env.REACT_APP_BASE_URL}/api/comments/`,
   singleComment: (pk) => `/api/comments/${pk}`,
-  allUsers: '/api/users/',
-  singleUser: (pk) => `/api/users/${pk}`,
-  allPockets: '/api/pockets/',
-  singlePocket: (pk) => `/api/pockets/${pk}/`,
-  login: '/api/users/login/',
-  register: '/api/users/register/',
+  allUsers: `${process.env.REACT_APP_BASE_URL}/api/users/`,
+  singleUser: (pk) => `${process.env.REACT_APP_BASE_URL}/api/users/${pk}`,
+  allPockets: `${process.env.REACT_APP_BASE_URL}/api/pockets/`,
+  singlePocket: (pk) => `${process.env.REACT_APP_BASE_URL}/api/pockets/${pk}/`,
+  login: `${process.env.REACT_APP_BASE_URL}/api/users/login/`,
+  register: `${process.env.REACT_APP_BASE_URL}/api/users/register/`,
   cloudinary: `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`
 };
 
