@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import '../styles/Leaderboard.scss';
 import ProfilePicture from './common/ProfilePicture';
+import ItemImage from './common/ItemImage';
 
 export default function Users({ updateStatus }) {
   const [users, setUsers] = useState(null);
@@ -42,13 +43,13 @@ export default function Users({ updateStatus }) {
               <div className='user-items-div'>
                 <p className='user-items'>Items: </p>
                 {user.items.map((item) => (
-                  <img
-                    src={item.item_image}
-                    alt={item.item_image}
-                    className='leaderboard-item-image'
+                  <ItemImage
                     key={item.id}
-                  ></img>
-                ))}{' '}
+                    cloudinaryImageId={item.item_image}
+                    imageHeight={35}
+                    imageWidth={35}
+                  />
+                ))}
               </div>
             </li>
           </React.Fragment>
