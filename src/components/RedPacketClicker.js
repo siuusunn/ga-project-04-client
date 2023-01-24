@@ -2,6 +2,7 @@ import redPacket from '../assets/8-bit-redpacket.png';
 import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
 import ItemsDisplayInClicker from './ItemsDisplayInClicker';
+import InstructionModal from './InstructionModal';
 import Comments from './Comments';
 import Leaderboard from './Leaderboard';
 import { API } from '../lib/api';
@@ -67,6 +68,7 @@ export default function RedPacketClicker() {
           />
         </div>
         <div className='middle-section'>
+          <InstructionModal />
           <div className='red-packet-div'>
             {isLoggedIn ? (
               <img
@@ -82,12 +84,6 @@ export default function RedPacketClicker() {
                 className='red-packet-clicker-button'
               ></img>
             )}
-            {/* // <img
-            //   src={redPacket}
-            //   alt='red-packet-clicker-button'
-            //   onClick={handleClick}
-            //   className='red-packet-clicker-button'
-            // ></img> */}
           </div>
           <div className='user-info-div'>
             {isLoggedIn ? (
