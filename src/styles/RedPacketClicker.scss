@@ -117,6 +117,25 @@ $shadow-color: #4aa52e;
         border-right: $outline-width black solid;
       }
     }
+    .instruction-button {
+      background: yellow;
+      box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px orange;
+      height: 5.5vh;
+      width: 15vw;
+      margin-bottom: 3.5vh;
+
+      &:hover,
+      &:focus {
+        background: #f6be00;
+        box-shadow: inset (-$shadow-width * 1.5) (-$shadow-width * 1.5) 0px 0px
+          darkorange;
+        cursor: pointer;
+      }
+
+      &:active {
+        box-shadow: inset $shadow-width $shadow-width 0px 0px orange;
+      }
+    }
   }
 
   .items-display-div {

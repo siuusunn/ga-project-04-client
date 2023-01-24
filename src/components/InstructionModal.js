@@ -16,7 +16,9 @@ export default function InstructionModal() {
 
   return (
     <>
-      <button onClick={handleClick}>How to Play</button>
+      <button onClick={handleClick} className='instruction-button'>
+        HOW TO PLAY
+      </button>
       {showModal ? (
         <div className='modal'>
           <div className='modal-content'>
