@@ -43,10 +43,18 @@ $shadow-color: #4aa52e;
       width: 29vw;
       height: auto;
 
+      .clicker-pp-username-div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2vh;
+      }
+
       .user-title {
         margin-top: 2vh;
+        margin-left: 1vw;
         margin-bottom: 2vh;
         font-size: 1.6em;
+        text-align: center;
       }
 
       .user-current-rp,

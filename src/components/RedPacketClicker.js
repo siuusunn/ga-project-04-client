@@ -3,6 +3,7 @@ import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
 import ItemsDisplayInClicker from './ItemsDisplayInClicker';
 import InstructionModal from './InstructionModal';
+import ProfilePicture from './common/ProfilePicture';
 import Comments from './Comments';
 import Leaderboard from './Leaderboard';
 import { API } from '../lib/api';
@@ -88,9 +89,17 @@ export default function RedPacketClicker() {
           <div className='user-info-div'>
             {isLoggedIn ? (
               <>
-                <h1 className='user-title'>
-                  {userData?.owner.username}'s Pocket
-                </h1>
+                <div className='clicker-pp-username-div'>
+                  <ProfilePicture
+                    cloudinaryImageId={userData?.owner.profile_image}
+                    imageHeight={80}
+                    imageWidth={80}
+                    className='clicker-profile-picture'
+                  />
+                  <h1 className='user-title'>
+                    {userData?.owner.username}'s Pocket
+                  </h1>
+                </div>
                 <h3 className='user-current-rp'>
                   Red Packets earned this session:{' '}
                   <span>
