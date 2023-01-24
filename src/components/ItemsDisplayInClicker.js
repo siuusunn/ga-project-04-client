@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API } from '../lib/api';
+import ItemImage from './common/ItemImage';
 import '../styles/ItemsDisplayInClicker.scss';
 
 export default function ItemsDisplayInClicker({
@@ -86,12 +87,13 @@ export default function ItemsDisplayInClicker({
           <React.Fragment key={item.id}>
             <div className='single-item-div'>
               <div className='image-and-name-div'>
-                <img
-                  src={item.item_image}
+                <ItemImage
+                  cloudinaryImageId={item.item_image}
+                  imageHeight={80}
+                  imageWidth={80}
                   className='item-image'
-                  alt={item.item_image}
-                ></img>
-                <div>
+                />
+                <div className='item-info-div'>
                   <h3>{item.name}</h3>
                   <p className='item-description'>{item.description}</p>
                   <p className='item-unlock-amount'>
