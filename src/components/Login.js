@@ -42,7 +42,7 @@ export default function Login() {
         <h1 className='login-title'>LOGIN</h1>
         <form onSubmit={handleSubmit}>
           <div className='login-input-container'>
-            <label for='email' className='login-label'>
+            <label htmlFor='email' className='login-label'>
               EMAIL:
             </label>
             <input
@@ -53,7 +53,7 @@ export default function Login() {
               className='login-input'
               required
             ></input>
-            <label for='password' className='login-label'>
+            <label htmlFor='password' className='login-label'>
               PASSWORD:
             </label>
             <div className='login-password-div'>

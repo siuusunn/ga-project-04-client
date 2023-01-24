@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import '../styles/Leaderboard.scss';
 
@@ -12,7 +12,6 @@ export default function Users({ updateStatus }) {
     API.GET(API.ENDPOINTS.allPockets)
       .then(({ data }) => {
         setUsers(data);
-        // console.log(data);
       })
       .catch(({ message, response }) => {
         console.error(message, response);
@@ -24,7 +23,7 @@ export default function Users({ updateStatus }) {
       <h3 className='leaderboard-title'>LEADERBOARD</h3>
       <div className='leaderboard-container'>
         {sortedScore?.map((user) => (
-          <>
+          <React.Fragment key={user.id}>
             <li>
               <span className='username'>{user.owner.username}</span>
               <p className='user-score'>
@@ -37,11 +36,12 @@ export default function Users({ updateStatus }) {
                     src={item.item_image}
                     alt={item.item_image}
                     className='leaderboard-item-image'
+                    key={item.id}
                   ></img>
                 ))}{' '}
               </div>
             </li>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </>

@@ -22,11 +22,12 @@ export default function ItemsDisplayInClicker({
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
       .then(({ data }) => {
+        console.log(data);
         setItems(data);
         setUnlockedItems(userItems?.map((item) => item.id));
       })
-      .catch(({ message, response }) => {
-        console.error(message, response);
+      .catch((error) => {
+        console.error(error);
       });
   }, [userItems]);
 

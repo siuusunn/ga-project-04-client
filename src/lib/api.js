@@ -2,7 +2,7 @@ import axios from 'axios';
 import { AUTH } from './auth';
 
 const ENDPOINTS = {
-  allItems: '/api/items/',
+  allItems: 'http://localhost:8000/api/items/',
   singleItem: (pk) => `/api/items/${pk}`,
   allComments: '/api/comments/',
   singleComment: (pk) => `/api/comments/${pk}`,

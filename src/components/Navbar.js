@@ -19,13 +19,13 @@ export default function Navbar() {
         <Link to='/clicker' className='navbar-item'>
           CLICKER
         </Link>
-        {AUTH.getSuperUser() === 'true' ? (
+        {/* {AUTH.getSuperUser() === 'true' ? (
           <Link to='/additem' className='navbar-item'>
             ADD ITEM
           </Link>
         ) : (
           <></>
-        )}
+        )} */}
         {isLoggedIn ? (
           <Link to='/clicker' onClick={logout} className='navbar-item'>
             LOGOUT

@@ -81,7 +81,7 @@ export default function Register() {
           .then(({ data }) => {
             API.POST(API.ENDPOINTS.allPockets, data);
             AUTH.setToken(data.token);
-            navigate('/');
+            navigate('/clicker');
           })
           .catch((e) => console.error(e));
       });
@@ -96,7 +96,7 @@ export default function Register() {
         <h1 className='register-title'>REGISTER</h1>
         <form onSubmit={handleSubmit}>
           <div className='register-input-container'>
-            <label for='username' className='register-label'>
+            <label htmlFor='username' className='register-label'>
               USERNAME:
             </label>
             <input
@@ -106,7 +106,7 @@ export default function Register() {
               onChange={handleChange}
               className='register-input'
             ></input>
-            <label for='email' className='register-label'>
+            <label htmlFor='email' className='register-label'>
               EMAIL:
             </label>
             <input
@@ -116,7 +116,7 @@ export default function Register() {
               onChange={handleChange}
               className='register-input'
             ></input>
-            <label for='password' className='register-label'>
+            <label htmlFor='password' className='register-label'>
               PASSWORD:
             </label>
             <div className='register-password-div'>
@@ -141,7 +141,7 @@ export default function Register() {
                 />
               )}
             </div>
-            <label for='password_confirmation' className='register-label'>
+            <label htmlFor='password_confirmation' className='register-label'>
               PASSWORD CONFIRMATION:
             </label>
             <div className='register-password-div'>
@@ -166,7 +166,7 @@ export default function Register() {
                 />
               )}
             </div>
-            <label for='first_name' className='register-label'>
+            <label htmlFor='first_name' className='register-label'>
               FIRST NAME:
             </label>
             <input
@@ -176,7 +176,7 @@ export default function Register() {
               onChange={handleChange}
               className='register-input'
             ></input>
-            <label for='last_name' className='register-label'>
+            <label htmlFor='last_name' className='register-label'>
               LAST NAME:
             </label>
             <input
@@ -186,7 +186,7 @@ export default function Register() {
               onChange={handleChange}
               className='register-input'
             ></input>
-            <label for='profile_image' className='register-label'>
+            <label htmlFor='profile_image' className='register-label'>
               PROFILE PICTURE:
             </label>
             {/* <input
