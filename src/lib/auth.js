@@ -1,7 +1,13 @@
 const setToken = (token) => localStorage.setItem('token', token);
 
+const isSuperUser = (status) => localStorage.setItem('is_superuser', status);
+
 const getToken = () => {
   return localStorage.getItem('token');
+};
+
+const getSuperUser = () => {
+  return localStorage.getItem('is_superuser');
 };
 
 const getPayload = () => {
@@ -26,4 +32,12 @@ const deleteToken = () => {
 
 const isOwner = (objectId) => objectId === getPayload().userId;
 
-export const AUTH = { setToken, getToken, getPayload, deleteToken, isOwner };
+export const AUTH = {
+  setToken,
+  getToken,
+  getPayload,
+  deleteToken,
+  isOwner,
+  isSuperUser,
+  getSuperUser
+};

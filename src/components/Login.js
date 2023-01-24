@@ -27,6 +27,7 @@ export default function Login() {
       API.POST(API.ENDPOINTS.login, formFields).then(({ data }) => {
         console.log(data);
         AUTH.setToken(data.token);
+        AUTH.isSuperUser(data.is_superuser);
         navigate('/clicker');
         console.log('Successfully logged in');
       });
