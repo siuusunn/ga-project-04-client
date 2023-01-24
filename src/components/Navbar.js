@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       <nav>
-        <Link to='/clicker' className='navbar-item'>
+        <Link to='/' className='navbar-item'>
           CLICKER
         </Link>
         {AUTH.getSuperUser() === 'true' ? (
@@ -27,7 +27,7 @@ export default function Navbar() {
           <></>
         )}
         {isLoggedIn ? (
-          <Link to='/clicker' onClick={logout} className='navbar-item'>
+          <Link to='/' onClick={logout} className='navbar-item'>
             LOGOUT
           </Link>
         ) : (
