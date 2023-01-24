@@ -13,7 +13,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/clicker' element={<RedPacketClicker />} />
+          <Route path='/' element={<RedPacketClicker />} />
           <Route path='/additem' element={<AddItem />} />
           <Route path='/loginregister' element={<LoginAndRegister />} />
         </Routes>
