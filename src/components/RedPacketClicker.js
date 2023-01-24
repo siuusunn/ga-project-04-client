@@ -106,7 +106,9 @@ export default function RedPacketClicker() {
                   <span>{userData?.multiplier}</span>
                 </h4>
                 <br />
-                <button onClick={handleSubmit}>SAVE YOUR PROGRESS</button>
+                <button className='button' onClick={handleSubmit}>
+                  SAVE YOUR PROGRESS
+                </button>
               </>
             ) : (
               <h3>REGISTER NOW TO START EARNING RED PACKETS!</h3>
