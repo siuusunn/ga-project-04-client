@@ -31,11 +31,10 @@ export default function Register() {
   const handleFileChange = (event) => {
     event.preventDefault();
     setFile(event.target.files[0]);
-    console.log(file);
+    // console.log(file);
   };
 
   const handleSubmit = async (event) => {
-    console.log(file);
     event.preventDefault();
     const imageData = new FormData();
     imageData.append('file', file);
