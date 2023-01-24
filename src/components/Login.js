@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
 import { useNavigate } from 'react-router-dom';
+import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -9,6 +10,12 @@ export default function Login() {
     email: '',
     password: ''
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handleChange = (event) => {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
@@ -43,17 +50,34 @@ export default function Login() {
               name='email'
               onChange={handleChange}
               className='login-input'
+              required
             ></input>
             <label for='password' className='login-label'>
               PASSWORD:
             </label>
-            <input
-              type='password'
-              id='password'
-              name='password'
-              onChange={handleChange}
-              className='login-input'
-            ></input>
+            <div className='login-password-div'>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id='password'
+                name='password'
+                onChange={handleChange}
+                className='login-password-input'
+                required
+              ></input>
+              {showPassword ? (
+                <VisibilityOutlined
+                  className='visibility-button'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                />
+              ) : (
+                <VisibilityOffOutlined
+                  className='visibility-button'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                />
+              )}
+            </div>
             <button type='submit' className='login-button'>
               SIGN IN
             </button>

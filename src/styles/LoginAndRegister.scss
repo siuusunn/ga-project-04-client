@@ -57,6 +57,25 @@ $shadow-color: #4aa52e;
       margin-bottom: 1vh;
       border-radius: 5px;
     }
+
+    .login-password-div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-password-input {
+      width: 16.5vw;
+      height: 2.5vh;
+      margin-top: 1vh;
+      margin-bottom: 1vh;
+      border-radius: 5px;
+    }
+
+    .visibility-button {
+      cursor: pointer;
+      margin-left: 0.2vw;
+    }
   }
 
   .register-container {
@@ -87,6 +106,25 @@ $shadow-color: #4aa52e;
 
     .register-label {
       font-size: 0.8vw;
+    }
+
+    .register-password-div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .register-password-input {
+      width: 16.5vw;
+      height: 2.5vh;
+      margin-top: 1vh;
+      margin-bottom: 1vh;
+      border-radius: 5px;
+    }
+
+    .visibility-button {
+      cursor: pointer;
+      margin-left: 0.2vw;
     }
   }
 
