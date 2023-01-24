@@ -43,10 +43,18 @@ $shadow-color: #4aa52e;
       width: 29vw;
       height: auto;
 
+      .clicker-pp-username-div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2vh;
+      }
+
       .user-title {
         margin-top: 2vh;
+        margin-left: 1vw;
         margin-bottom: 2vh;
         font-size: 1.6em;
+        text-align: center;
       }
 
       .user-current-rp,
@@ -61,14 +69,14 @@ $shadow-color: #4aa52e;
       }
     }
 
-    button {
+    .button {
       background: $button-background;
       display: inline-block;
       position: relative;
       text-align: center;
       font-size: 0.7em;
       padding: 0.5vw;
-      font-family: 'Press Start 2P', cursive;
+      font-family: 'Press Start 2P', sans-serif;
       text-decoration: none;
       color: black;
       box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;
@@ -117,6 +125,25 @@ $shadow-color: #4aa52e;
         border-right: $outline-width black solid;
       }
     }
+    .instruction-button {
+      background: yellow;
+      box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px orange;
+      height: 5.5vh;
+      width: 15vw;
+      margin-bottom: 3.5vh;
+
+      &:hover,
+      &:focus {
+        background: #f6be00;
+        box-shadow: inset (-$shadow-width * 1.5) (-$shadow-width * 1.5) 0px 0px
+          darkorange;
+        cursor: pointer;
+      }
+
+      &:active {
+        box-shadow: inset $shadow-width $shadow-width 0px 0px orange;
+      }
+    }
   }
 
   .items-display-div {
@@ -150,3 +177,24 @@ $shadow-color: #4aa52e;
     flex-direction: column;
   }
 }
+
+// @media only screen and (min-width: 300px) {
+//   .clicker-page-container {
+//     display: flex;
+//     flex-direction: column-reverse;
+//     height: auto;
+
+//     .items-display-div {
+//       height: 50vh;
+//       width: auto;
+//       overflow: none;
+//       margin-top: 10vh;
+//       margin-right: 0;
+//       padding-left: 2vw;
+//       padding-right: 2vw;
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//     }
+//   }
+// }

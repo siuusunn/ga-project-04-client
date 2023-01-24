@@ -9,62 +9,43 @@
   margin: 3 * $width auto;
 }
 
-$outline-width: 3px;
+$outline-width: 4px;
 $shadow-width: 4px;
 
 $button-background: #92cd41;
 $sec-button-background: #76c442;
 $shadow-color: #4aa52e;
 
-.comments-container {
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.add-item-page-container {
+  height: 97vh;
 
-  .comments-title {
-    text-align: center;
-    margin-bottom: 1vh;
-    font-size: 1.6em;
-  }
-
-  .comments-display-div {
-    height: 30vh;
-    width: 26vw;
-    overflow: auto;
+  .add-item-container {
     display: flex;
-    flex-direction: column-reverse;
-    @include step3v2(3px, black, #780000);
-    padding: 0.8vw;
-    background-color: #b94046;
-
-    .single-comment {
-      font-size: 0.6em;
-      margin-bottom: 1vh;
-      display: flex;
-      align-items: flex-start;
-
-      .comment-username {
-        color: yellow;
-      }
-
-      .comment-timestamp {
-        color: pink;
-      }
-    }
-  }
-  .input-container {
-    margin-top: 1vh;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    width: 26vw;
+    align-items: center;
+    @include step3v2(4px, black, #780000);
+    height: 60vh;
+    width: 40vw;
+    background-color: orange;
+    margin-top: 18vh;
 
-    .input-label {
-      font-size: 0.8em;
+    .add-item-title {
+      font-size: 1.5vw;
+      margin-bottom: 1.5vh;
     }
-    input {
-      width: 15vw;
+
+    .add-item-input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2vh;
+    }
+
+    .add-item-input {
+      width: 24vw;
+      height: 3vh;
       border-radius: 5px;
     }
 
@@ -73,14 +54,15 @@ $shadow-color: #4aa52e;
       display: inline-block;
       position: relative;
       text-align: center;
-      font-size: 8px;
+      font-size: 14px;
+      padding: 5px;
       font-family: 'Press Start 2P', sans-serif;
       text-decoration: none;
       color: black;
       box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;
-      height: 2.5vh;
-      width: 3.5vw;
-      margin-left: 0.3vw;
+      height: 5vh;
+      width: 10vw;
+      margin-top: 2.5vh;
 
       &:hover,
       &:focus {
@@ -125,9 +107,3 @@ $shadow-color: #4aa52e;
     }
   }
 }
-
-// @media only screen and (min-width: 300px) {
-//   .comments-container {
-//     display: none;
-//   }
-// }

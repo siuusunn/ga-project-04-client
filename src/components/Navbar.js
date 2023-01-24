@@ -5,22 +5,29 @@ import '../styles/Navbar.scss';
 
 export default function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useAuthenticated();
-  const navigate = useNavigate();
 
   const logout = () => {
     AUTH.deleteToken();
     setIsLoggedIn(false);
-    navigate('/');
+    AUTH.isSuperUser('false');
+    window.location.reload();
   };
 
   return (
     <>
       <nav>
-        <Link to='/clicker' className='navbar-item'>
+        <Link to='/' className='navbar-item'>
           CLICKER
         </Link>
+        {AUTH.getSuperUser() === 'true' ? (
+          <Link to='/additem' className='navbar-item'>
+            ADD ITEM
+          </Link>
+        ) : (
+          <></>
+        )}
         {isLoggedIn ? (
-          <Link to='/clicker' onClick={logout} className='navbar-item'>
+          <Link to='/' onClick={logout} className='navbar-item'>
             LOGOUT
           </Link>
         ) : (

@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { useState, useEffect } from 'react';
 import { API } from '../lib/api';
+import { useAuthenticated } from '../hooks/useAuthenticated';
 import '../styles/Comments.scss';
 
 export default function Comments() {
@@ -9,18 +10,17 @@ export default function Comments() {
     text: ''
   });
   const [isUpdated, setIsUpdated] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useAuthenticated();
 
   const handleChange = (e) => {
     e.preventDefault();
     setCommentField({ ...commentField, [e.target.name]: e.target.value });
-    console.log(commentField);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     API.POST(API.ENDPOINTS.allComments, commentField, API.getHeaders());
     setCommentField({ text: '' });
-    console.log(commentField);
     setIsUpdated(true);
   };
 
@@ -28,6 +28,7 @@ export default function Comments() {
     API.GET(API.ENDPOINTS.allComments)
       .then(({ data }) => setComments(data))
       .catch((error) => console.error(error));
+    setIsUpdated(false);
   }, [isUpdated]);
 
   return (
@@ -37,7 +38,7 @@ export default function Comments() {
         <div className='comments-display-div'>
           <div>
             {comments?.map((comment) => (
-              <div className='single-comment'>
+              <div className='single-comment' key={comment.created_at}>
                 <p className='comment-username'>{comment.owner.username}:</p>
                 <p className='comment-text'>
                   {comment.text}
@@ -50,22 +51,26 @@ export default function Comments() {
             ))}
           </div>
         </div>
-        <div className='input-container'>
-          <label for='text' className='input-label'>
-            MESSAGE:
-          </label>
-          <input
-            type='text'
-            id='text'
-            name='text'
-            value={commentField.text}
-            required
-            onChange={handleChange}
-          ></input>
-          <button type='submit' onClick={handleSubmit}>
-            SUBMIT
-          </button>
-        </div>
+        {isLoggedIn ? (
+          <div className='input-container'>
+            <label htmlFor='text' className='input-label'>
+              MESSAGE:
+            </label>
+            <input
+              type='text'
+              id='text'
+              name='text'
+              value={commentField.text}
+              required
+              onChange={handleChange}
+            ></input>
+            <button type='submit' onClick={handleSubmit}>
+              SUBMIT
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

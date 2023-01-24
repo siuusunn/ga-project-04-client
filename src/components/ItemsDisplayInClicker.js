@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API } from '../lib/api';
+import ItemImage from './common/ItemImage';
 import '../styles/ItemsDisplayInClicker.scss';
 
 export default function ItemsDisplayInClicker({
   numberOfRedPackets,
   userItems,
   userId,
-  userMultiplier
+  userMultiplier,
+  isUpdatedFunction
 }) {
   const [items, setItems] = useState(null);
   const [unlockedItems, setUnlockedItems] = useState([]);
@@ -18,18 +20,16 @@ export default function ItemsDisplayInClicker({
     multiplier: userMultiplier
   };
 
-  // console.log(userMultiplier);
-
   useEffect(() => {
     API.GET(API.ENDPOINTS.allItems)
       .then(({ data }) => {
         setItems(data);
         setUnlockedItems(userItems?.map((item) => item.id));
       })
-      .catch(({ message, response }) => {
-        console.error(message, response);
+      .catch((error) => {
+        console.error(error);
       });
-  }, [userItems, numberOfRedPackets]);
+  }, [userItems]);
 
   const isUnlocked = (
     itemId,
@@ -65,15 +65,18 @@ export default function ItemsDisplayInClicker({
 
   const handleUnlock = (e) => {
     e.preventDefault();
-    numberOfRedPacketsAfterUnlock = numberOfRedPackets - e.target.id;
-    console.log(numberOfRedPacketsAfterUnlock, userId);
-    apiReqBody.number_of_red_packets =
-      numberOfRedPacketsAfterUnlock - e.target.id;
-    apiReqBody.items.push(e.target.value);
-    apiReqBody.multiplier = userMultiplier + parseInt(e.target.className);
-    console.log(apiReqBody);
-    API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
-    window.location.reload();
+    try {
+      numberOfRedPacketsAfterUnlock = numberOfRedPackets - e.target.id;
+      apiReqBody.number_of_red_packets =
+        numberOfRedPacketsAfterUnlock - e.target.id;
+      apiReqBody.items.push(e.target.value);
+      apiReqBody.multiplier = userMultiplier + parseInt(e.target.className);
+      API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
+      isUpdatedFunction();
+      console.log('unlocked');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -81,15 +84,16 @@ export default function ItemsDisplayInClicker({
       <h1 className='items-title'>ITEMS</h1>
       <div>
         {items?.map((item) => (
-          <>
-            <div key={item.name} className='single-item-div'>
+          <React.Fragment key={item.id}>
+            <div className='single-item-div'>
               <div className='image-and-name-div'>
-                <img
-                  src={item.item_image}
+                <ItemImage
+                  cloudinaryImageId={item.item_image}
+                  imageHeight={80}
+                  imageWidth={80}
                   className='item-image'
-                  alt={item.item_image}
-                ></img>
-                <div>
+                />
+                <div className='item-info-div'>
                   <h3>{item.name}</h3>
                   <p className='item-description'>{item.description}</p>
                   <p className='item-unlock-amount'>
@@ -108,7 +112,7 @@ export default function ItemsDisplayInClicker({
                 </div>
               </div>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </>

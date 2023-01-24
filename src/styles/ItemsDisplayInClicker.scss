@@ -47,7 +47,7 @@ $shadow-color: #4aa52e;
     text-align: center;
     font-size: 0.9em;
     padding: 0.4vw;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', sans-serif;
     text-decoration: none;
     color: black;
     box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;
@@ -97,9 +97,41 @@ $shadow-color: #4aa52e;
     }
   }
 
-  .item-image {
-    height: auto;
-    width: 5vw;
-    margin-right: 0.7vw;
+  .item-info-div {
+    margin-left: 1vw;
   }
 }
+
+// @media only screen and (min-width: 300px) {
+//   .items-title {
+//     font-size: 0.5em;
+//   }
+//   .item-image {
+//     display: none;
+//   }
+
+//   .single-item-div {
+//     display: flex;
+//     flex-direction: column;
+//     font-size: 0.4em;
+//     @include step3v2(0.15vw, black, #780000);
+//     margin-bottom: 1vh;
+//     padding: 0.5vw;
+//     background-color: #b94046;
+
+//     .image-and-name-div {
+//       display: flex;
+//       align-items: center;
+
+//       .item-description {
+//         display: none;
+//       }
+
+//       .item-unlock-amount,
+//       .item-effect {
+//         font-size: 0.85em;
+//         color: pink;
+//       }
+//     }
+//   }
+// }
