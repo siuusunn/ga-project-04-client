@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { API } from '../lib/api';
 import '../styles/Leaderboard.scss';
+import ProfilePicture from './common/ProfilePicture';
 
 export default function Users({ updateStatus }) {
   const [users, setUsers] = useState(null);
@@ -25,7 +26,16 @@ export default function Users({ updateStatus }) {
         {sortedScore?.map((user) => (
           <React.Fragment key={user.id}>
             <li>
-              <span className='username'>{user.owner.username}</span>
+              <div className='username-and-profile-div'>
+                <h4 className='username'>{user.owner.username}</h4>
+                <ProfilePicture
+                  cloudinaryImageId={user.owner.profile_image}
+                  imageWidth={40}
+                  imageHeight={40}
+                  className='leaderboard-profile-picture'
+                />
+              </div>
+
               <p className='user-score'>
                 Red Packets: {user.number_of_red_packets}
               </p>
