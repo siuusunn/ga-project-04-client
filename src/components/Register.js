@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { API } from '../lib/api';
 import { AUTH } from '../lib/auth';
 import { useNavigate } from 'react-router-dom';
+import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -15,6 +16,13 @@ export default function Register() {
     profile_image: ''
   });
   // const [file, setFile] = useState();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handleChange = (event) => {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
@@ -111,23 +119,53 @@ export default function Register() {
             <label for='password' className='register-label'>
               PASSWORD:
             </label>
-            <input
-              type='password'
-              id='password'
-              name='password'
-              onChange={handleChange}
-              className='register-input'
-            ></input>
+            <div className='register-password-div'>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id='password'
+                name='password'
+                onChange={handleChange}
+                className='register-password-input'
+              ></input>
+              {showPassword ? (
+                <VisibilityOutlined
+                  className='visibility-button'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                />
+              ) : (
+                <VisibilityOffOutlined
+                  className='visibility-button'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                />
+              )}
+            </div>
             <label for='password_confirmation' className='register-label'>
               PASSWORD CONFIRMATION:
             </label>
-            <input
-              type='password'
-              id='password_confirmation'
-              name='password_confirmation'
-              onChange={handleChange}
-              className='register-input'
-            ></input>
+            <div className='register-password-div'>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                id='password_confirmation'
+                name='password_confirmation'
+                onChange={handleChange}
+                className='register-password-input'
+              ></input>
+              {showPassword ? (
+                <VisibilityOutlined
+                  className='visibility-button'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                />
+              ) : (
+                <VisibilityOffOutlined
+                  className='visibility-button'
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                />
+              )}
+            </div>
             <label for='first_name' className='register-label'>
               FIRST NAME:
             </label>
