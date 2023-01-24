@@ -23,8 +23,15 @@
   padding: 0.7vw;
   background-color: #b94046;
 
-  .username {
-    color: orange;
+  .username-and-profile-div {
+    display: inline-flex;
+    align-items: center;
+
+    .username {
+      color: orange;
+      display: inline;
+      margin-right: 0.5vw;
+    }
   }
 
   .user-score {
