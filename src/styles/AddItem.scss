@@ -1,0 +1,109 @@
+@mixin step3v2($width, $color, $bgcolor) {
+  box-shadow: $width 0 $bgcolor, -$width 0 $bgcolor, 0 (-$width) $bgcolor,
+    0 $width $bgcolor, 2 * $width 0 $bgcolor, -2 * $width 0 $bgcolor,
+    0 (-2 * $width) $bgcolor, 0 2 * $width $bgcolor, 0 0 0 $width $bgcolor,
+    3 * $width 0 $color, -3 * $width 0 $color, 0 3 * $width $color,
+    0 (-3 * $width) $color, 0 (-$width) 0 $width $color,
+    0 $width 0 $width $color, $width 0 0 $width $color,
+    -$width 0 0 $width $color;
+  margin: 3 * $width auto;
+}
+
+$outline-width: 4px;
+$shadow-width: 4px;
+
+$button-background: #92cd41;
+$sec-button-background: #76c442;
+$shadow-color: #4aa52e;
+
+.add-item-page-container {
+  height: 97vh;
+
+  .add-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include step3v2(4px, black, #780000);
+    height: 60vh;
+    width: 40vw;
+    background-color: orange;
+    margin-top: 18vh;
+
+    .add-item-title {
+      font-size: 1.5vw;
+      margin-bottom: 1.5vh;
+    }
+
+    .add-item-input-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2vh;
+    }
+
+    .add-item-input {
+      width: 24vw;
+      height: 3vh;
+      border-radius: 5px;
+    }
+
+    button {
+      background: $button-background;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      font-size: 14px;
+      padding: 5px;
+      font-family: 'Press Start 2P', sans-serif;
+      text-decoration: none;
+      color: black;
+      box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px $shadow-color;
+      height: 5vh;
+      width: 10vw;
+      margin-top: 2.5vh;
+
+      &:hover,
+      &:focus {
+        background: $sec-button-background;
+        box-shadow: inset (-$shadow-width * 1.5) (-$shadow-width * 1.5) 0px 0px
+          $shadow-color;
+        cursor: pointer;
+      }
+
+      &:active {
+        box-shadow: inset $shadow-width $shadow-width 0px 0px $shadow-color;
+      }
+
+      &:disabled {
+        background-color: grey;
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: content-box;
+      }
+
+      &:before {
+        top: -$outline-width;
+        left: 0;
+        border-top: $outline-width black solid;
+        border-bottom: $outline-width black solid;
+      }
+
+      &:after {
+        left: -$outline-width;
+        top: 0;
+        border-left: $outline-width black solid;
+        border-right: $outline-width black solid;
+      }
+    }
+  }
+}

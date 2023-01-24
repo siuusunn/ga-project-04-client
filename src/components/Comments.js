@@ -15,7 +15,6 @@ export default function Comments() {
   const handleChange = (e) => {
     e.preventDefault();
     setCommentField({ ...commentField, [e.target.name]: e.target.value });
-    console.log(commentField);
   };
 
   const handleSubmit = (e) => {
@@ -39,7 +38,7 @@ export default function Comments() {
         <div className='comments-display-div'>
           <div>
             {comments?.map((comment) => (
-              <div className='single-comment'>
+              <div className='single-comment' key={comment.created_at}>
                 <p className='comment-username'>{comment.owner.username}:</p>
                 <p className='comment-text'>
                   {comment.text}
@@ -54,7 +53,7 @@ export default function Comments() {
         </div>
         {isLoggedIn ? (
           <div className='input-container'>
-            <label for='text' className='input-label'>
+            <label htmlFor='text' className='input-label'>
               MESSAGE:
             </label>
             <input
