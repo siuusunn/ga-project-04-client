@@ -28,7 +28,7 @@ export default function Login() {
         console.log(data);
         AUTH.setToken(data.token);
         AUTH.isSuperUser(data.is_superuser);
-        navigate('/clicker');
+        navigate('/');
         console.log('Successfully logged in');
       });
     } catch (error) {

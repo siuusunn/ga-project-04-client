@@ -12,18 +12,40 @@ export default function AddItem() {
     red_packets_needed_to_unlock: 0,
     multiplier: 0
   });
+  const [file, setFile] = useState('');
 
   const handleChange = (event) => {
     setFormFields({ ...formFields, [event.target.name]: event.target.value });
   };
 
+  const handleFileChange = (event) => {
+    event.preventDefault();
+    setFile(event.target.files[0]);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const imageData = new FormData();
+    imageData.append('file', file);
+    imageData.append(
+      'upload_preset',
+      process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
+    );
     try {
-      API.POST(API.ENDPOINTS.allItems, formFields, API.getHeaders()).then(
+      const cloudinaryResponse = await API.POST(
+        API.ENDPOINTS.cloudinary,
+        imageData
+      );
+      const imageId = cloudinaryResponse.data.public_id;
+
+      const apiReqBody = {
+        ...formFields,
+        item_image: imageId
+      };
+
+      await API.POST(API.ENDPOINTS.allItems, apiReqBody, API.getHeaders()).then(
         ({ data }) => {
-          console.log(data);
-          navigate('/clicker');
+          navigate('/');
           console.log('Item added!');
         }
       );
@@ -69,10 +91,10 @@ export default function AddItem() {
                 ITEM IMAGE:
               </label>
               <input
-                type='text'
+                type='file'
                 id='item_image'
                 name='item_image'
-                onChange={handleChange}
+                onChange={handleFileChange}
                 className='add-item-input'
                 required
               ></input>
