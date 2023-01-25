@@ -15,7 +15,6 @@ export default function RedPacketClicker() {
   const [isUpdated, setIsUpdated] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useAuthenticated();
   const [clicks, setClicks] = useState(0);
-
   const id = AUTH.getPayload().sub;
 
   useEffect(() => {
@@ -32,15 +31,18 @@ export default function RedPacketClicker() {
   const handleClick = (e) => {
     setClicks((click) => (click += userData?.multiplier));
     localStorage.setItem('number_of_red_packets', clicks);
+    setUserData({
+      ...userData,
+      number_of_red_packets:
+        userData?.number_of_red_packets + userData?.multiplier
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      const existing_red_packets = userData?.number_of_red_packets;
-      const new_number_of_red_packets = existing_red_packets + clicks;
       const apiReqBody = {
-        number_of_red_packets: new_number_of_red_packets
+        number_of_red_packets: userData?.number_of_red_packets
       };
 
       API.PUT(
@@ -101,15 +103,10 @@ export default function RedPacketClicker() {
                   </h1>
                 </div>
                 <h3 className='user-current-rp'>
-                  Red Packets earned this session:{' '}
-                  <span>
-                    {localStorage.getItem('number_of_red_packets', clicks)}
-                  </span>
-                </h3>
-                <h4 className='user-total-rp'>
-                  Total Red Packets earned:{' '}
+                  Red Packets earned:{' '}
                   <span>{userData?.number_of_red_packets}</span>
-                </h4>
+                  <p> </p>
+                </h3>
                 <h4 className='user-multiplier'>
                   Red Packet Bonus Per Click:{' '}
                   <span>{userData?.multiplier}</span>

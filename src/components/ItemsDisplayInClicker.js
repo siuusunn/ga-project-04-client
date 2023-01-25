@@ -61,14 +61,11 @@ export default function ItemsDisplayInClicker({
     }
   };
 
-  // ! PROBLEM: RENDERS TWICE SO THE MATH IS NOT ACCURATE
-
   const handleUnlock = (e) => {
     e.preventDefault();
     try {
       numberOfRedPacketsAfterUnlock = numberOfRedPackets - e.target.id;
-      apiReqBody.number_of_red_packets =
-        numberOfRedPacketsAfterUnlock - e.target.id;
+      apiReqBody.number_of_red_packets = numberOfRedPacketsAfterUnlock;
       apiReqBody.items.push(e.target.value);
       apiReqBody.multiplier = userMultiplier + parseInt(e.target.className);
       API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
@@ -94,14 +91,13 @@ export default function ItemsDisplayInClicker({
                   className='item-image'
                 />
                 <div className='item-info-div'>
-                  <h3>{item.name}</h3>
+                  <h3>{item.name.toUpperCase()}</h3>
                   <p className='item-description'>{item.description}</p>
                   <p className='item-unlock-amount'>
-                    Red Packets Needed to unlock:{' '}
-                    {item.red_packets_needed_to_unlock}
+                    Cost : {item.red_packets_needed_to_unlock} Red Packets
                   </p>
                   <p className='item-effect'>
-                    Effects: + {item.multiplier} red packet per click
+                    Effects: + {item.multiplier} Red Packets per click
                   </p>
                   {isUnlocked(
                     item.id,
