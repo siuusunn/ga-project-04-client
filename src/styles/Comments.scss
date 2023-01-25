@@ -126,8 +126,8 @@ $shadow-color: #4aa52e;
   }
 }
 
-// @media only screen and (min-width: 300px) {
-//   .comments-container {
-//     display: none;
-//   }
-// }
+@media only screen and (max-width: 420px) {
+  .comments-container {
+    display: none;
+  }
+}

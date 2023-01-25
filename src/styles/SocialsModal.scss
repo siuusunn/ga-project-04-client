@@ -9,7 +9,7 @@
   margin: 3 * $width auto;
 }
 
-.modal {
+.socials-modal {
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -23,8 +23,7 @@
   background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content {
+.socials-modal-content {
   background-color: lightyellow;
   margin: auto;
   padding: 20px;
@@ -32,58 +31,30 @@
   width: 40%;
   @include step3v2(1vw, black, red);
 
-  .modal-title {
+  .socials-modal-title {
     text-align: center;
     margin-top: 3vh;
     margin-bottom: 3vh;
   }
 
-  li {
-    line-height: 1.5em;
-    margin: 0.8vw;
+  .socials-icons-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 2.5vh;
   }
-
-  .reminder-disclaimer {
-    text-align: center;
-    margin-top: 4vh;
-    margin-bottom: 3vh;
-  }
-
-  .disclaimer {
-    font-size: 0.1em;
-    color: lightgray;
-  }
-}
-
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 420px) {
-  .modal-content {
+  .socials-modal-content {
     width: 80%;
 
-    .modal-title {
+    .socials-modal-title {
       font-size: 1.4em;
     }
 
-    li {
-      font-size: 0.8em;
-    }
-
-    .reminder {
-      font-size: 1em;
+    .socials-icons-container {
+      width: 100%;
+      flex-wrap: wrap;
     }
   }
 }
