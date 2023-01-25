@@ -61,14 +61,11 @@ export default function ItemsDisplayInClicker({
     }
   };
 
-  // ! PROBLEM: RENDERS TWICE SO THE MATH IS NOT ACCURATE
-
   const handleUnlock = (e) => {
     e.preventDefault();
     try {
       numberOfRedPacketsAfterUnlock = numberOfRedPackets - e.target.id;
-      apiReqBody.number_of_red_packets =
-        numberOfRedPacketsAfterUnlock - e.target.id;
+      apiReqBody.number_of_red_packets = numberOfRedPacketsAfterUnlock;
       apiReqBody.items.push(e.target.value);
       apiReqBody.multiplier = userMultiplier + parseInt(e.target.className);
       API.PUT(API.ENDPOINTS.singlePocket(userId), apiReqBody, API.getHeaders());
