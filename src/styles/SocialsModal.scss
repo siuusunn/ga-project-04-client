@@ -43,3 +43,18 @@
     margin-bottom: 2.5vh;
   }
 }
+
+@media only screen and (max-width: 420px) {
+  .socials-modal-content {
+    width: 80%;
+
+    .socials-modal-title {
+      font-size: 1.4em;
+    }
+
+    .socials-icons-container {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+}
