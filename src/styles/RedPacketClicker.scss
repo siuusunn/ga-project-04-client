@@ -129,8 +129,10 @@ $shadow-color: #4aa52e;
       background: yellow;
       box-shadow: inset (-$shadow-width) (-$shadow-width) 0px 0px orange;
       height: 5.5vh;
-      width: 15vw;
-      margin-bottom: 3.5vh;
+      width: 10vw;
+      margin-left: 1vw;
+      margin-right: 1vw;
+      margin-bottom: 3vh;
 
       &:hover,
       &:focus {

@@ -72,8 +72,10 @@ export default function RedPacketClicker() {
           />
         </div>
         <div className='middle-section'>
-          <InstructionModal />
-          <SocialsModal />
+          <div className='modals-div'>
+            <InstructionModal />
+            <SocialsModal />
+          </div>
           <div className='red-packet-div'>
             {isLoggedIn ? (
               <img
