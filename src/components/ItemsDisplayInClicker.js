@@ -91,7 +91,7 @@ export default function ItemsDisplayInClicker({
                   className='item-image'
                 />
                 <div className='item-info-div'>
-                  <h3>{item.name}</h3>
+                  <h3>{item.name.toUpperCase()}</h3>
                   <p className='item-description'>{item.description}</p>
                   <p className='item-unlock-amount'>
                     Cost : {item.red_packets_needed_to_unlock} Red Packets
