@@ -3,6 +3,7 @@ import '../styles/RedPacketClicker.scss';
 import { useState, useEffect } from 'react';
 import ItemsDisplayInClicker from './ItemsDisplayInClicker';
 import InstructionModal from './InstructionModal';
+import SocialsModal from './SocialsModal';
 import ProfilePicture from './common/ProfilePicture';
 import Comments from './Comments';
 import Leaderboard from './Leaderboard';
@@ -72,6 +73,7 @@ export default function RedPacketClicker() {
         </div>
         <div className='middle-section'>
           <InstructionModal />
+          <SocialsModal />
           <div className='red-packet-div'>
             {isLoggedIn ? (
               <img
