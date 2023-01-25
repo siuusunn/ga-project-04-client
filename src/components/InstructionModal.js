@@ -34,7 +34,7 @@ export default function InstructionModal() {
             <li>Check out the leaderboard to see who's in the lead</li>
             <li>Trash talk your competitors in the chat</li>
             <div className='reminder-disclaimer'>
-              <h3>Don't forget to save your progress!</h3>
+              <h3 className='reminder'>Don't forget to save your progress!</h3>
               <p className='disclaimer'>
                 The dev takes no responsibility for any red packets lost or
                 emotional damage caused by trash talks

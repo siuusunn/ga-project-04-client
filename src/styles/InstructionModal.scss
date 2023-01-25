@@ -69,3 +69,21 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 420px) {
+  .modal-content {
+    width: 80%;
+
+    .modal-title {
+      font-size: 1.4em;
+    }
+
+    li {
+      font-size: 0.8em;
+    }
+
+    .reminder {
+      font-size: 1em;
+    }
+  }
+}
